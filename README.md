@@ -5,6 +5,8 @@ This all my personal dotfiles and some initial OSX configurations.
 **Warning**: Don't blindly use my configs unless you know exactly
 what you are doing. Use at your own risk!
 
+![terminal screenshot](./screenshots/2024-05-20 17.45.04.jpg)
+
 ## How To Use
 
 1. Clone this repo
