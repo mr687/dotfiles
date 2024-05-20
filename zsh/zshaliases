@@ -1,0 +1,20 @@
+alias reload="zsh -l"
+
+alias ls="eza --color=always --long --git --no-filesize --no-time --no-permissions --no-user"
+alias ll="ls -a"
+alias dev="cd ~/.dev"
+alias home="cd ~"
+
+alias cat="bat"
+alias cd="z"
+alias man="tldr"
+
+alias c="code ."
+alias vim="nvim"
+
+alias random32="openssl rand -base64 24 | tr -d '\n' ; echo"
+alias flushdns="sudo killall -HUP mDNSResponder"
+killport() {
+  pid="$(lsof -ti tcp:$1)"
+  kill -9 $pid
+}

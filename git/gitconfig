@@ -1,0 +1,55 @@
+[user]
+	name = mr687
+	email = 26916086+mr687@users.noreply.github.com
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+	ignorecase = false
+  pager = delta
+
+[push]
+  default = simple
+  autoSetupRemote = true
+
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+  ui = auto
+  
+[hub]
+  protocol = https
+  
+[github]
+	user = mr687
+
+[diff]
+  tool = nvimdiff
+  colorMoved = default
+
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  side-by-side = true
+
+[merge]
+  conflictstyle = diff3

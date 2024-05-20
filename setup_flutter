@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Flutter SDK: https://docs.flutter.dev/release/archive?tab=macos
+# Command line tools only: https://developer.android.com/studio
+
+# if [ ! which sdkmanager &> /dev/null ]; then
+#     log "Android command line tools are not installed."
+#     exit 1
+# fi
+
+# api_version=34
+
+# log "Installing platform-tools in $ANDROID_HOME..."
+# yes | sdkmanager "platform-tools" --sdk_root=$ANDROID_HOME
+
+# log "Installing emulator in $ANDROID_HOME..."
+# yes | sdkmanager "emulator" --sdk_root=$ANDROID_HOME
+
+# log "Installing cmdline-tools in $ANDROID_HOME..."
+# yes | sdkmanager "cmdline-tools;latest" --sdk_root=$ANDROID_HOME
+
+# log "Installing build-tools $api_version.0.0 in $ANDROID_HOME..."
+# yes | sdkmanager "build-tools;$api_version.0.0" --sdk_root=$ANDROID_HOME
+
+# log "Installing platforms:android-$api_version in $ANDROID_HOME..."
+# yes | sdkmanager "platforms;android-$api_version" --sdk_root=$ANDROID_HOME
+
+# android_image_name="system-images;android-$api_version-ext8;google_apis_playstore;arm64-v8a"
+# log "Installing $android_image_name in $ANDROID_HOME..."
+# yes | sdkmanager "$android_image_name" --sdk_root=$ANDROID_HOME
+
+# no | avdmanager create avd --force --abi arm64-v8a -n "android$api_version" -k "$android_image_name"
+
+# yes | flutter doctor --android-licenses

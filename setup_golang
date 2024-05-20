@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# https://go.dev/dl/go1.22.2.darwin-arm64.tar.gz
+go_version="$GO_VERSION"
+go_filename="go$go_version.$platform-$arch.tar.gz"
+go_download_link="https://go.dev/dl/$go_filename"
+go_location=$TMPDIR
+
+if [ -x "$(command -v go)" ];then
+    if [[ "$(go version)" =~ ${GO_VERSION} ]]; then
+        exit 0
+    fi
+fi
+
+mkdir -p "$GOPATH"
+
+log "Downloading $go_download_link"
+wget -c $go_download_link -P $go_location
+
+log "Extracting $go_location$go_filename"
+tar -C $DEV_HOME/.go -xzf $go_location$go_filename
+mv $DEV_HOME/.go/go $DEV_HOME/.go/go$go_version
+rm -rf $go_location$go_filename

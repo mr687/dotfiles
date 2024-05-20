@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $(pmset -g ps | head -1) =~ "Battery Power" ]]; then
+    blueutil --power 0
+    networksetup -setairportpower airport off
+
+    echo 0 > ~/.bluestatus
+    echo 0 > ~/.wifistatus
+fi

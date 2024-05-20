@@ -1,0 +1,16 @@
+#!/bin/bash
+
+bluestatus=$(head -n 1 ~/.bluestatus)
+wifistatus=$(head -n 1 ~/.wifistatus)
+
+if [[ "$wifistatus" != "1" ]]; then
+    networksetup -setairportpower airport on
+    echo 1 > ~/.wifistatus
+fi
+
+if [[ "$bluestatus" != "1" ]]; then
+    osascript -e 'tell app "Terminal" to do script "$(which blueutil) --power 1"'
+    sleep 3
+    kill `ps -A | grep -w Terminal.app | grep -v grep | awk '{print $1}'`
+    echo 1 > ~/.bluestatus
+fi
