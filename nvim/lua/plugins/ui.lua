@@ -2,6 +2,7 @@ return {
 	-- messages, cmdline and the popupmenu
 	{
 		"folke/noice.nvim",
+		event = "VeryLazy",
 		opts = function(_, opts)
 			table.insert(opts.routes, {
 				filter = {
@@ -56,20 +57,21 @@ return {
 	{
 		"rcarriga/nvim-notify",
 		opts = {
-			timeout = 5000,
+			timeout = 3000,
+			stages = "slide",
 		},
 	},
 
 	-- animations
-	{
-		"echasnovski/mini.animate",
-		event = "VeryLazy",
-		opts = function(_, opts)
-			opts.scroll = {
-				enable = false,
-			}
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.animate",
+	-- 	event = "VeryLazy",
+	-- 	opts = function(_, opts)
+	-- 		opts.scroll = {
+	-- 			enable = false,
+	-- 		}
+	-- 	end,
+	-- },
 
 	-- buffer line
 	{
@@ -154,13 +156,14 @@ return {
 		event = "VimEnter",
 		opts = function(_, opts)
 			local logo = [[
- ____  _____ _____ _     _  _____ _____
-/  _ \/  __//    // \   / \/    //  __/
-| | \||  \  |  __\| |   | ||  __\|  \  
-| |_/||  /_ | |__ | |_/\| || |   |  /_ 
-\____/\____\\_/\/ \____/\_/\_/   \____\
-                                       
-      ]]
+  _        _    _        _    _        _   
+ //\__  __/\\  //\__  __/\\  //\__  __/\\  
+//   _\/_   \\//   _\/_   \\//   _\/_   \\ 
+\\:`\    /'://||:`|    |':||\\:`\    /':// 
+//:./_  _\.:\\||:.|_  _|.:||//:./_  _\.:\\ 
+\\  __/\__  //\\  __/\__  //\\  __/\__  // 
+ \\/      \//  \\/      \//  \\/      \//  
+]]
 
 			logo = string.rep("\n", 10) .. logo .. "\n\n"
 			opts.config.header = vim.split(logo, "\n")

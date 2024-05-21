@@ -5,6 +5,12 @@ return {
 			ensure_installed = {
 				"gitignore",
 				"go",
+				"vim",
+				"regex",
+				"lua",
+				"bash",
+				"markdown",
+				"markdown_inline",
 			},
 
 			-- matchup = {
