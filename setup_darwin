@@ -34,6 +34,8 @@ check_installed tlrc tlrc
 check_installed thefuck thefuck
 check_installed tmux tmux
 
+check_installed conda miniforge
+
 # Better osx than default
 check_installed gawk gawk
 check_installed coreutils coreutils
