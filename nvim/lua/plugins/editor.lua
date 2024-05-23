@@ -60,21 +60,6 @@ return {
 	-- change some telescope options and a keymap to browse plugin files
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				config = function()
-					require("telescope").load_extension("fzf")
-				end,
-			},
-			{
-				"nvim-telescope/telescope-media-files.nvim",
-				config = function()
-					require("telescope").load_extension("media_files")
-				end,
-			},
-		},
 		keys = {
       -- add a keymap to browse plugin files
       -- stylua: ignore
@@ -83,13 +68,6 @@ return {
         function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
         desc = "Find Plugin File",
       },
-			{
-				"<leader>fm",
-				function()
-					require("telescope").extensions.media_files.media_files()
-				end,
-				desc = "Find Media Files",
-			},
 		},
 		opts = {
 			extensions = {
@@ -99,12 +77,6 @@ return {
 					override_file_sorter = true, -- override the file sorter
 					case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 					-- the default case_mode is "smart_case"
-				},
-				media_files = {
-					-- filetypes whielist
-					-- defaults to png, jpg, mp4, webm, pdf
-					filetypes = { "png", "webp", "jpg", "jpeg" },
-					find_cmd = "rg",
 				},
 			},
 		},
