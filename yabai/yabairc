@@ -36,3 +36,6 @@ yabai -m rule --add app=WhatsApp manage=off
 yabai -m rule --add app=Finder manage=off
 yabai -m rule --add app=Preview manage=off
 yabai -m rule --add app=mpv manage=off
+yabai -m rule --add app=qemu-system-aarch64 manage=off
+yabai -m rule --add app=WireGuard manage=off
+yabai -m rule --add app="Activity Monitor" manage=off
