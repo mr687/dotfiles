@@ -44,8 +44,9 @@ source $ZSH/oh-my-zsh.sh
 _evalcache /opt/homebrew/bin/brew shellenv
 
 # FLUTTER SDK
+flutter_version=3_22_0
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
-export PATH="$HOME/.dev/.flutter3_7_12/bin:$PATH"
+export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"
 alias fr="flutter run"
 alias fb="flutter pub run build_runner build --delete-conflicting-outputs"
@@ -74,11 +75,20 @@ export GOPATH="$HOME/.dev/.go/lib"
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 alias goworkspaces="cd $GOPATH"
 
+# RUST
+. "$HOME/.cargo/env"
+
+# COCOAPODS
+export GEM_HOME="$HOME/.gem"
+export PATH="$GEM_HOME/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
+
 export PATH="$HOME/.jenv/bin:$PATH"
 _evalcache jenv init -
 _evalcache direnv hook zsh
 
 export DOTFILE_PATH="$HOME/.dotfiles"
+[[ ! -f $DOTFILE_PATH/zsh/zshvault ]] || . $DOTFILE_PATH/zsh/zshvault
 [[ ! -f $DOTFILE_PATH/zsh/zfunction ]] || . $DOTFILE_PATH/zsh/zfunction
 [[ ! -f $DOTFILE_PATH/zsh/zshaliases ]] || . $DOTFILE_PATH/zsh/zshaliases
 
@@ -139,6 +149,7 @@ else
     fi
 fi
 unset __conda_setup
+conda deactivate
 # <<< conda initialize <<<
 
 

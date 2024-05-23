@@ -1,0 +1,66 @@
+profzsh() {
+  shell=${1-$SHELL}
+  ZPROF=true $shell -i -c exit
+}
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+idc() {
+	local endpoint="https://api.idcloudhost.com/v1"
+	local apiKey="$IDC_API_KEY"
+	local location="$IDC_LOC"
+	local vmUUID="$IDC_VM_ID"
+	local billingId="$IDC_BILL_ID"
+	local action="info"
+	local method="GET"
+	local output=". | {status: .status, name: .name, vcpu: .vcpu, memory: .memory, os: .os_name, os_version: .os_version}"
+	local outputBalance="[ { title: .[].title, credit_amount: .[].credit_amount, running_totals: .[].running_totals } ]"
+	local outputInfo="[{status: .[].status, name: .[].name, vcpu: .[].vcpu, memory: .[].memory, os: .[].os_name, os_version: .[].os_version}]"
+
+	case $1 in
+		info)
+			echo "Getting VM info.."
+			action="info"
+			method="GET"
+		;;
+		balance)
+			echo "Getting Balance info.."
+			action="balance"
+			method="GET"
+		;;
+		down)
+			echo "VM stopping.."
+			action="stop"
+			method="POST"
+		;;
+		up)
+			echo "VM starting.."
+			action="start"
+			method="POST"
+		;;	
+	esac
+
+	if [ $action = "balance" ]; then
+		curl "$endpoint/payment/billing_account/list" \
+			-H "apikey: $apiKey" \
+			-X GET | jq "$outputBalance"
+	elif [ $action = "info" ]; then
+		curl "$endpoint/$location/user-resource/vm/list" \
+			-H "apikey: $apiKey" \
+			-X GET | jq "$outputInfo"
+	elif [ $method = "POST" ]; then
+		curl "$endpoint/$location/user-resource/vm/$action" \
+			-H "apikey: $apiKey" \
+			-X POST \
+			-d "uuid=$vmUUID" | jq "$output"
+	elif [ $method = "GET" ]; then
+		curl "$endpoint/$location/user-resource/vm?uuid=$vmUUID" \
+			-H "apikey: $apiKey" \
+			-X GET | jq "$output"
+	else
+		echo -e "Invalid method."
+	fi
+}

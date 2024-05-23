@@ -1,6 +1,6 @@
 alias reload="zsh -l"
 
-alias ls="eza --color=always --long --git --no-filesize --no-time --no-permissions --no-user"
+alias ls="eza --color=always --long --git --no-permissions --no-user"
 alias ll="ls -a"
 alias dev="cd ~/.dev"
 alias home="cd ~"
