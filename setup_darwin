@@ -33,6 +33,7 @@ check_installed skhd koekeishiya/formulae/skhd
 check_installed tlrc tlrc
 check_installed thefuck thefuck
 check_installed tmux tmux
+check_installed starship starship
 
 check_installed conda miniforge
 

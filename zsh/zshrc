@@ -9,13 +9,8 @@ export VISUAL="vim"
 export TERM="xterm-256color"
 [[ -n $TMUX ]] && export TERM="screen-256color"
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # OMZ
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ZSH-NVM
 export NVM_LAZY_LOAD=true
@@ -28,8 +23,6 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
     evalcache
-    git
-    zsh-nvm
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -38,10 +31,8 @@ zstyle ':omz:plugins:nvm' lazy yes
 zstyle ':omz:plugins:nvm' autoload yes
 
 source $ZSH/oh-my-zsh.sh
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 _evalcache /opt/homebrew/bin/brew shellenv
+_evalcache starship init zsh
 
 # FLUTTER SDK
 flutter_version=3_22_0

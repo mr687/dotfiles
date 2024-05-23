@@ -8,6 +8,7 @@ DOTFILE_PATH="$HOME/.dotfiles"
 
 relink $DOTFILE_PATH/nvim "${XDG_CONFIG_HOME}/nvim"
 relink $DOTFILE_PATH/alacritty "${XDG_CONFIG_HOME}/alacritty"
+relink $DOTFILE_PATH/starship/starship.toml "${XDG_CONFIG_HOME}/starship.toml"
 relink $DOTFILE_PATH/yabai "${XDG_CONFIG_HOME}/yabai"
 relink $DOTFILE_PATH/skhd "${XDG_CONFIG_HOME}/skhd"
 relink $DOTFILE_PATH/bat "${XDG_CONFIG_HOME}/bat"
