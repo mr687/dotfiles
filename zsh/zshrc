@@ -23,6 +23,8 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
     evalcache
+    # git
+    zsh-nvm
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -79,6 +81,7 @@ _evalcache jenv init -
 _evalcache direnv hook zsh
 
 export DOTFILE_PATH="$HOME/.dotfiles"
+[[ ! -f $DOTFILE_PATH/zsh/zshbindings ]] || . $DOTFILE_PATH/zsh/zshbindings
 [[ ! -f $DOTFILE_PATH/zsh/zshvault ]] || . $DOTFILE_PATH/zsh/zshvault
 [[ ! -f $DOTFILE_PATH/zsh/zfunction ]] || . $DOTFILE_PATH/zsh/zfunction
 [[ ! -f $DOTFILE_PATH/zsh/zshaliases ]] || . $DOTFILE_PATH/zsh/zshaliases

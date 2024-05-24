@@ -5,9 +5,13 @@ alias ll="ls -a"
 alias dev="cd ~/.dev"
 alias home="cd ~"
 
+alias builtincat="cat"
 alias cat="bat"
-alias cd="z"
+
+alias builtinman="man"
 alias man="tldr"
+
+alias cd="z"
 
 alias c="code ."
 alias vim="nvim"
