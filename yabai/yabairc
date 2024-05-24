@@ -14,7 +14,7 @@ yabai -m config window_gap 0
 # -- mouse settings --
 
 # center mouse on window with focus
-yabai -m config mouse_follows_focus on
+yabai -m config mouse_follows_focus off
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier alt
@@ -38,4 +38,5 @@ yabai -m rule --add app=Preview manage=off
 yabai -m rule --add app=mpv manage=off
 yabai -m rule --add app=qemu-system-aarch64 manage=off
 yabai -m rule --add app=WireGuard manage=off
+yabai -m rule --add app=Raycast manage=off
 yabai -m rule --add app="Activity Monitor" manage=off
