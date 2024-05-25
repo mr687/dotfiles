@@ -36,10 +36,15 @@ check_installed tmux tmux
 check_installed starship starship
 
 check_installed conda miniforge
+check_installed borders borders
 
 # Better osx than default
 check_installed gawk gawk
 check_installed coreutils coreutils
+
+# ZSH Plugins
+check_installed zsh-autosuggestions
+check_installed zsh-syntax-highlighting
 
 # Nerd Fonts
 fonts_list=(
