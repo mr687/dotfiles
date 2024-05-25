@@ -2,6 +2,8 @@ if [[ "$ZPROF" = true ]]; then
   zmodload zsh/zprof
 fi
 
+setopt HIST_IGNORE_SPACE
+
 # Default Term
 export GPG_TTY=$(tty)
 export EDITOR="vim"

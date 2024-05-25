@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. ./utils
+
+XDG_CONFIG_HOME=$HOME/.config
+DEV_HOME=$HOME/.dev
+DOTFILE_PATH="$HOME/.dotfiles"
+
+relink $DOTFILE_PATH/nvim "${XDG_CONFIG_HOME}/nvim"
+relink $DOTFILE_PATH/alacritty "${XDG_CONFIG_HOME}/alacritty"
+relink $DOTFILE_PATH/borders "${XDG_CONFIG_HOME}/borders"
+relink $DOTFILE_PATH/starship/starship.toml "${XDG_CONFIG_HOME}/starship.toml"
+relink $DOTFILE_PATH/yabai "${XDG_CONFIG_HOME}/yabai"
+relink $DOTFILE_PATH/skhd "${XDG_CONFIG_HOME}/skhd"
+relink $DOTFILE_PATH/bat "${XDG_CONFIG_HOME}/bat"
+relink $DOTFILE_PATH/zsh/zshrc ~/.zshrc
+relink $DOTFILE_PATH/zsh/zprofile ~/.zprofile
+relink $DOTFILE_PATH/git/gitconfig ~/.gitconfig
+relink $DOTFILE_PATH/lazygit "${XDG_CONFIG_HOME}/lazygit"
+relink $DOTFILE_PATH/tmux/tmux.conf ~/.tmux.conf
+relink $DOTFILE_PATH/tmux "${XDG_CONFIG_HOME}/tmux"
+
