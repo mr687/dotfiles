@@ -1,5 +1,3 @@
-alias reload="source ~/.zshrc"
-
 alias ls="eza --color=always --long --git --no-permissions --no-user"
 alias ll="ls -a"
 alias dev="cd ~/.dev"
