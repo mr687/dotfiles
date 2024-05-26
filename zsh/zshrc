@@ -24,14 +24,17 @@ sourcefile $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlightin
 
 export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=false
-export NVM_NO_USE=true
+export NVM_NO_USE=false
 sourcefile "$DOTFILE_DIR/zsh/plugins/zsh-nvm/zsh-nvm.plugin.zsh"
 
+[[ ! -f $DOTFILE_DIR/zsh/zshbindings ]] || . $DOTFILE_DIR/zsh/zshbindings
+[[ ! -f $DOTFILE_DIR/zsh/zshvault ]] || . $DOTFILE_DIR/zsh/zshvault
+[[ ! -f $DOTFILE_DIR/zsh/custom_function ]] || . $DOTFILE_DIR/zsh/custom_function
+[[ ! -f $DOTFILE_DIR/zsh/zshaliases ]] || . $DOTFILE_DIR/zsh/zshaliases
+
 export GPG_TTY=$(tty)
-export EDITOR="vim"
-export VISUAL="vim"
 export TERM="xterm-256color"
-# [[ -n $TMUX ]] && export TERM="screen-256color"
+[[ -n $TMUX ]] && export TERM="screen-256color"
 
 # SHELL PROMPT
 _evalcache starship init zsh
@@ -79,11 +82,6 @@ export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 export PATH="$HOME/.jenv/bin:$PATH"
 _evalcache jenv init -
 _evalcache direnv hook zsh
-
-[[ ! -f $DOTFILE_DIR/zsh/zshbindings ]] || . $DOTFILE_DIR/zsh/zshbindings
-[[ ! -f $DOTFILE_DIR/zsh/zshvault ]] || . $DOTFILE_DIR/zsh/zshvault
-[[ ! -f $DOTFILE_DIR/zsh/custom_function ]] || . $DOTFILE_DIR/zsh/custom_function
-[[ ! -f $DOTFILE_DIR/zsh/zshaliases ]] || . $DOTFILE_DIR/zsh/zshaliases
 
 # ----- Misc Tools
 # FZF
