@@ -16,7 +16,7 @@ require("lazy").setup({
 				colorscheme = "tokyonight",
 				news = {
 					lazyvim = true,
-					neovim = true,
+					neovim = false,
 				},
 			},
 		},
@@ -27,7 +27,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.markdown" },
 		{ import = "lazyvim.plugins.extras.lang.go" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
-		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+
 		{ import = "plugins" },
 	},
 	defaults = {
@@ -35,9 +35,19 @@ require("lazy").setup({
 		version = false, -- always use the latest git commit
 	},
 	checker = {
+		-- automatically check for plugin updates
 		enabled = true,
+		-- get a notification when new updates are found
+		-- disable it as it's too annoying
+		notify = false,
+		-- check for updates every day
+		frequency = 86400,
 	},
 	change_detection = {
+		-- automatically check for config file changes and reload the ui
+		enabled = true,
+		-- get a notification when changes are found
+		-- disable it as it's too annoying
 		notify = false,
 	},
 	performance = {
@@ -47,15 +57,31 @@ require("lazy").setup({
 		rtp = {
 			-- disable some rtp plugins
 			disabled_plugins = {
+				"2html_plugin",
+				"getscript",
+				"getscriptPlugin",
 				"gzip",
-				-- "matchit",
-				-- "matchparen",
+				"logipat",
+				"netrw",
 				"netrwPlugin",
-				"rplugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+				"matchit",
+				"tar",
 				"tarPlugin",
-				"tohtml",
-				"tutor",
+				"rrhelper",
+				"spellfile_plugin",
+				"vimball",
+				"vimballPlugin",
+				"zip",
 				"zipPlugin",
+				"tutor",
+				"rplugin",
+				"synmenu",
+				"optwin",
+				"compiler",
+				"bugreport",
+				"ftplugin",
 			},
 		},
 	},

@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+vim.g.mapleader = [[ ]]
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
@@ -44,17 +44,8 @@ keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 keymap.set("n", "sx", ":close<Return>", opts)
--- Move window
--- keymap.set("n", "sh", "<C-w>h")
--- keymap.set("n", "sk", "<C-w>k")
--- keymap.set("n", "sj", "<C-w>j")
--- keymap.set("n", "sl", "<C-w>l")
 
--- tmux-navigation-plugins
-keymap.set("n", "<C-h>", ":TmuxNavigateLeft<Return>", opts)
-keymap.set("n", "<C-j>", ":TmuxNavigateDown<Return>", opts)
-keymap.set("n", "<C-k>", ":TmuxNavigateUp<Return>", opts)
-keymap.set("n", "<C-l>", ":TmuxNavigateRight<Return>", opts)
+keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Diagnostics
 keymap.set("n", "<C-n>", function()
