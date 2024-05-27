@@ -1,7 +1,0 @@
-sourcefile() {
-  if [ -f "$1" ]; then
-    source "$1"
-  else
-    echo "$1" "not found"
-  fi
-}
