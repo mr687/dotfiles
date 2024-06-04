@@ -1,8 +1,18 @@
 #!/usr/bin/env zsh
 
+# macOS specific
+#
+# Check if running on macOS, otherwise stop here
+[[ ! "x$SYSTEM" == "xDarwin" ]] && return
+
 export GPG_TTY=$(tty)
 export TERM="xterm-256color"
 [[ -n $TMUX ]] && export TERM="screen-256color"
+
+#
+# GNU Core Utils
+# brew info coreutils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 [[ ! -f $DOTFILE_DIR/zsh/zshvault ]] || . $DOTFILE_DIR/zsh/zshvault
 [[ ! -f $DOTFILE_DIR/zsh/custom_function ]] || . $DOTFILE_DIR/zsh/custom_function
@@ -29,8 +39,10 @@ alias random32="openssl rand -base64 24 | tr -d '\n' ; echo"
 alias flushdns="sudo killall -HUP mDNSResponder"
 killport() {
   pid="$(lsof -ti tcp:$1)"
-  kill -9 $pid
+  kill -9 "${pid[@]}"
 }
+
+export NODE_NO_WARNINGS=1
 
 _evalcache /opt/homebrew/bin/brew shellenv
 _evalcache starship init zsh
@@ -55,8 +67,8 @@ export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 
 # PHP
-export PATH="$(brew --prefix php@8.1)/bin:$PATH"
-export PATH="$(brew --prefix php@8.1)/sbin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.1/include"
 

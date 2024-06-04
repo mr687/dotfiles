@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-zmodload zsh/zprof
+# zmodload zsh/zprof
+
+export EDITOR="vim"
 
 export DOTFILE_DIR=${ZDOTDIR:-$HOME}/.dotfiles
 export ZSHCONFIG=$DOTFILE_DIR/zsh
@@ -31,4 +33,3 @@ case $SYSTEM in
     # not yet match GNU & BSD stat
   ;;
 esac
-

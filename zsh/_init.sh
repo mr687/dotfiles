@@ -10,7 +10,14 @@ if [[ "x$SYSTEM" = "xDarwin"  ]]; then
     # system executables
     #export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/libexec
     # local system binaries
-    export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+    # /etc/paths
+    export PATH="/usr/local/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+
+    # /etc/paths.d/100-rvictl
+    export PATH="/Library/Apple/usr/bin:$PATH"
+
+    # /etc/paths.d/10-cryptex
+    export PATH="/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:$PATH"
 fi
 
 #-----------------------------------------------------
@@ -33,8 +40,9 @@ fi
 # Setting autoloaded functions
 #
 my_zsh_fpath=${ZSHCONFIG}/autoloaded
+brew_fpath="/opt/homebrew/share/zsh/site-functions"
 
-fpath=($my_zsh_fpath $fpath)
+fpath=($my_zsh_fpath $brew_fpath $fpath)
 
 if [[ -d "$my_zsh_fpath" ]]; then
     for func in $my_zsh_fpath/*; do
@@ -42,6 +50,7 @@ if [[ -d "$my_zsh_fpath" ]]; then
     done
 fi
 unset my_zsh_fpath
+unset brew_fpath
 
 #-----------------------------------------------------
 #
