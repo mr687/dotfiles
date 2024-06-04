@@ -2,16 +2,16 @@
 
 yabai -m config layout bsp \
 	window_placement second_child \
-	top_padding 15 \
-	bottom_padding 15 \
-	left_padding 15 \
-	right_padding 15 \
-	window_gap 15 \
+	top_padding 35 \
+	bottom_padding 35 \
+	left_padding 35 \
+	right_padding 35 \
+	window_gap 25 \
 	mouse_follows_focus off \
+	focus_follows_mouse off \
 	mouse_modifier alt \
 	mouse_action1 move \
 	mouse_action2 resize
-# external_bar         all:40:0
 
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
@@ -30,5 +30,6 @@ yabai -m rule --add app=IINA manage=off
 yabai -m rule --add app=qemu-system-aarch64 manage=off
 yabai -m rule --add app=WireGuard manage=off
 yabai -m rule --add app=Raycast manage=off
+yabai -m rule --add app=Bitwarden manage=off
 yabai -m rule --add app="Activity Monitor" manage=off
 yabai -m rule --add app="System Information" manage=off
