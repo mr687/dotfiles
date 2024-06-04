@@ -1,0 +1,2 @@
+local brew="echo ; echo 'UPDATING HOMEBREW'; echo ; brew update; brew upgrade; brew cleanup;"
+sh -c $brew

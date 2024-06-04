@@ -1,0 +1,28 @@
+if ! type "sketchybar" > /dev/null; then
+  echo "sketchybar is missing"
+  exit 1
+fi
+
+if ! type "brew" > /dev/null; then
+  echo "brew is missing"
+  exit 1
+fi
+
+if ! type "osas.menubar.toggle" > /dev/null; then
+  echo "custom command osas.menubar.toggle is missing"
+  exit 1
+fi
+
+sketchybar_status=$(brew services | grep sketchybar | awk '{ print $2 }')
+
+if [ $sketchybar_status = "none" ]; then
+  brew services start sketchybar
+  osas.menubar.toggle off
+  yabai -m config external_bar all:40:0
+else
+  brew services stop sketchybar
+  osas.menubar.toggle on
+  yabai -m config external_bar off:0:0
+fi
+
+echo "Done"

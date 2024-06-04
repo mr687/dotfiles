@@ -1,0 +1,6 @@
+if [ $# -eq 0 ]; then
+  echo "No arguments supplied"
+else
+  mkdir -p "$1"
+  cd "$1"
+fi
