@@ -24,6 +24,9 @@ keymap.set("n", "-", "<C-x>")
 -- Delete a word backwards
 keymap.set("n", "dw", 'vb"_d')
 
+-- Leave Insert Mode
+keymap.set("i", "jj", "<C-c>")
+
 -- Select all
 -- keymap.set("n", "<C-a>", "gg<S-v>G")
 
