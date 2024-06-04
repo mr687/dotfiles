@@ -2,7 +2,15 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Inserts a blank line between shell prompts
-add_newline = true
+add_newline = false
+
+[character]
+success_symbol = '[󱟬](bold green)'
+error_symbol = "[󱠫](bold red)"
+vicmd_symbol = "[󱟒](bold magenta)"
 
 [aws]
 disabled = true
+
+[directory]
+read_only = "(read only)"
