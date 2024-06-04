@@ -1,31 +1,31 @@
 #!/bin/bash
 
-relink() {
-    sleep 1
-    src="$1"
-    dst="$2"
-    
-    rm -rf "$dst"
-    dir=$(dirname "$dst")
-    [[ ! -d "$dir" ]] && mkdir -p "$dir"
-    
-    ln -s "$src" "$dst"
+log() {
+	echo "[x] $1"
 }
 
-log() {
-    echo "[x] $1"
+relink() {
+	src="$1"
+	dst="$2"
+	log "Linking $src to $dst"
+
+	rm -rf "$dst"
+	dir=$(dirname "$dst")
+	[[ ! -d "$dir" ]] && mkdir -p "$dir"
+
+	ln -s "$src" "$dst"
 }
 
 git_clone_latest_tag() {
-    remote=${*: -1} # get last argument
-    log "Getting list of tags from: $remote"
+	remote=${*: -1} # get last argument
+	log "Getting list of tags from: $remote"
 
-    tag=$(git ls-remote --tags --exit-code --refs "$remote" \
-        | sed -E 's/^[[:xdigit:]]+[[:space:]]+refs\/tags\/(.+)/\1/g' \
-        | sort --version-sort | tail -n1)
+	tag=$(git ls-remote --tags --exit-code --refs "$remote" |
+		sed -E 's/^[[:xdigit:]]+[[:space:]]+refs\/tags\/(.+)/\1/g' |
+		sort --version-sort | tail -n1)
 
-    echo "Selected tag: $tag"
+	echo "Selected tag: $tag"
 
-    # Clone as shallowly as possible. Remote is the last argument.
-    # git clone --branch "$tag" --depth 1 --shallow-submodules --recurse-submodules "$@"
+	# Clone as shallowly as possible. Remote is the last argument.
+	# git clone --branch "$tag" --depth 1 --shallow-submodules --recurse-submodules "$@"
 }

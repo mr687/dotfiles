@@ -28,4 +28,5 @@ relink $DOTFILE_PATH/git/gitconfig ~/.gitconfig
 relink $DOTFILE_PATH/lazygit "${XDG_CONFIG_HOME}/lazygit"
 
 relink $DOTFILE_PATH/tmux/tmux.conf ~/.tmux.conf
+relink $DOTFILE_PATH/tmux ~/.tmux
 relink $DOTFILE_PATH/tmux "${XDG_CONFIG_HOME}/tmux"
