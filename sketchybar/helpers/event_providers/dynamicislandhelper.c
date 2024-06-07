@@ -12,6 +12,8 @@ void handler(env env) {
   char *id = env_get_value_for_key(env, "INFO");
   char *args = env_get_value_for_key(env, "ISLAND_ARGS");
 
+  printf("helper: %s - %s\n", sender, id);
+
   if (strcmp(sender, "dynamic_island_request") == 0) {
     // Request to deliver new island
     isDisplaying = 0;
