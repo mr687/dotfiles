@@ -48,7 +48,7 @@ _evalcache /opt/homebrew/bin/brew shellenv
 _evalcache starship init zsh
 
 # FLUTTER SDK
-flutter_version=3_22_0
+flutter_version=3_7_12
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"
@@ -130,19 +130,3 @@ _evalcache thefuck --alias fk
 
 # Zoxide
 _evalcache zoxide init zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-#         . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# conda deactivate
-# <<< conda initialize <<<

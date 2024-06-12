@@ -10,11 +10,19 @@ args = ["-l"]
 TERM = "xterm-256color"
 
 [window]
+dimensions.columns = 75
+dimensions.lines = 10
+
+# M Pro 14 inch 2021
+# 3024 x 1964
+position.x = 1248
+position.y = 1033
+
 padding.x = 15
 padding.y = 15
 
 decorations = "Buttonless"
-opacity = 0.6
+opacity = 0.8
 blur = true
 
 option_as_alt = "Both"

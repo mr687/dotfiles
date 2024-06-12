@@ -23,3 +23,5 @@ path=(
   /usr/local/{bin,sbin}
   $path
 )
+
+export XDG_CONFIG_HOME=$HOME/.config

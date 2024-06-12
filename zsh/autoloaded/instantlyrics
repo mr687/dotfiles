@@ -1,3 +1,6 @@
 current_title="$(nowplaying-cli get title)"
 
-songlyrics-cli "${current_title}"
+result=$(songlyrics-cli "${current_title}" | jq ".lyrics" || true)
+
+printf "$current_title\n\n"
+printf "$result"

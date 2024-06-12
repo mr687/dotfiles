@@ -1,0 +1,5 @@
+set -ef
+
+delay=$1
+
+pbcopy </dev/null

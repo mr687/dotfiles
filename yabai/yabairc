@@ -31,5 +31,6 @@ yabai -m rule --add app=qemu-system-aarch64 manage=off
 yabai -m rule --add app=WireGuard manage=off
 yabai -m rule --add app=Raycast manage=off
 yabai -m rule --add app=Bitwarden manage=off
+yabai -m rule --add app=Music manage=off
 yabai -m rule --add app="Activity Monitor" manage=off
 yabai -m rule --add app="System Information" manage=off

@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+ask_section() {
+	msg=$1
+	echo "$msg"
+	read -k1 value
+	value=${value%$'\n'}
+	if [ -z "$value" ] || [ $value = 'y' ]; then
+		return 0
+	fi
+	return 1
+}
+
+if ! hash bw 2>/dev/null; then
+	echo "[x] bitwarden-cli is missing"
+	exit 1
+fi
+
+if ! hash jq 2>/dev/null; then
+	echo "[x] jq is missing"
+	exit 1
+fi
+
+if [ $# -lt 1 ]; then
+	echo "[x] $0: not enough arguments"
+	exit 1
+fi
+
+if [[ -z $BW_PASSWORD ]]; then
+	echo "[x] BW_PASSWORD is missing"
+	exit 1
+fi
+
+if [[ -z $BW_SESSION ]]; then
+	echo "[x] unlock bw session"
+	export BW_SESSION=$(bw unlock --passwordenv BW_PASSWORD --raw)
+fi
+
+query=$1
+shift
+opts=$@
+raw=false
+
+if [[ $opts =~ "-r" ]]; then
+	raw=true
+fi
+
+logins=$(bw list items --search $query)
+login_id=$(jq -r '.[] | "\(.name)\t\(.login.username)\t\(.id)"' <<<$logins |
+	fzf --reverse --delimiter="\t" --with-nth=1,2 --select-1 --exit-0 |
+	awk -F"\t" '{print $3}')
+
+if [[ -n $login_id ]]; then
+	login="$(printf "%s" "$logins" | jq -r ".[] | select(.id == \"${login_id}\")")"
+
+	username="$(printf "%s" "$login" | jq -r ".login.username")"
+	password="$(printf "%s" "$login" | jq -r ".login.password")"
+	totp="$(printf "%s" "$login" | jq -r ".login.totp")"
+
+	if ask_section "Press Enter to copy Username, S to skip: "; then
+		printf "%s" "${username}" | pbcopy
+		echo "[x] username copied"
+	fi
+
+	if ask_section "Press Enter to copy Password, S to skip: "; then
+		printf "%s" "${password}" | pbcopy
+		echo "[x] password copied"
+	fi
+
+	if [ "$totp" != "null" ]; then
+		if ask_section "Press Enter to copy TOTP, S to skip: "; then
+			printf "%s" "$(bw get totp $login_id)" | pbcopy
+			echo "[x] TOTP copied"
+		fi
+	fi
+else
+	echo "[x] no entry found!"
+fi

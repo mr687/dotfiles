@@ -1,12 +1,14 @@
-relink() {
-	src="$1"
-	dst="$2"
-	echo "Linking $src to $dst"
+#!/usr/bin/env bash
 
-	rm -rf "$dst"
-	dir=$(dirname "$dst")
-	[[ ! -d "$dir" ]] && mkdir -p "$dir"
+src="$1"
+dst="$2"
 
-	ln -s "$src" "$dst"
-}
+# [ -f $dst ] && echo "HALO"
 
+echo "Linking $src to $dst"
+
+rm -rf "$dst"
+dir=$(dirname "$dst")
+[[ ! -d "$dir" ]] && mkdir -p "$dir"
+
+ln -s "$src" "$dst"
