@@ -1,9 +1,9 @@
 sbar = require("sketchybar")
 
 sbar.begin_config()
-require("bar")
-require("default")
-require("items")
+
+require("island").setup({})
+
 sbar.end_config()
 
 sbar.event_loop()

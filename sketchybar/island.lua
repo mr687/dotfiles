@@ -1,41 +1,47 @@
-local user_config = require("user_config")
-local half_x_resolution = user_config.monitor.x_resolution / 2
-local squish_amount = user_config.animation.squish_amount
-local notch_width = user_config.notch.width
-local notch_height = user_config.notch.height
-local notch_corder_radius = user_config.notch.corner_radius
-
 local M = {}
 
-M.bar = {
-	start_animation = function(option)
-		local margin_1 = half_x_resolution - (notch_width + squish_amount)
-		local margin_2 = half_x_resolution - option.max_width
+function M.setup(opts)
+	opts = opts or {}
+	M.opts = opts
 
-		sbar.animate("tanh", 8, function()
-			sbar.bar({ margin = margin_1 })
-			sbar.bar({ margin = margin_2 - squish_amount })
-			sbar.bar({ margin = margin_2 })
-		end)
+	local island_features = require("features")
+	island_features.setup(opts)
 
-		sbar.animate("tanh", 10, function()
-			sbar.bar({ corner_radius = option.max_corner_radius })
-		end)
+	sbar.add("event", "dynamic_island_queue")
+	sbar.add("event", "dynamic_island_request")
 
-		sbar.animate("tanh", 10, function()
-			sbar.bar({ height = option.max_height + (squish_amount / 2) })
-			sbar.bar({ height = option.max_height })
-		end)
-	end,
-	reset_animation = function()
-		local margin_1 = half_x_resolution - notch_width + squish_amount
-		local margin_2 = half_x_resolution - notch_width
+	local island = sbar.add("item", "island", {
+		position = "center",
+		drawing = true,
+		mach_helper = "git.crissnb.islandhelper",
+		update_freq = 5,
+		width = 0,
+		icon = { drawing = false },
+		label = { drawing = false },
+		background = { drawing = false },
+	})
+	sbar.exec("sketchybar --subscribe island dynamic_island_queue dynamic_island_request")
 
-		sbar.animate("tanh", 10, function()
-			sbar.bar({ height = notch_height, corner_radius = notch_corder_radius, margin = margin_1 })
-			sbar.bar({ margin = margin_2 })
-		end)
-	end,
-}
+	-- sbar.add("event", "bluetooth_change", "UIDeviceBatteryStateDidChangeNotification")
+	-- island:subscribe("bluetooth_change", function(env)
+	-- 	print("bluetooth_change")
+	-- 	for key, value in pairs(env.INFO) do
+	-- 		print(key, value)
+	-- 	end
+	-- end)
+
+	sbar.add("event", "di_helper_listener_event")
+	local helper_listener = sbar.add("item", "di_helper_listener", {
+		position = "center",
+		width = 0,
+		label = { drawing = false },
+		icon = { drawing = false },
+	})
+	helper_listener:subscribe("di_helper_listener_event", function(env)
+		local identifier = env.IDENTIFIER
+		print("incoming: " .. identifier)
+		island_features.update(env)
+	end)
+end
 
 return M

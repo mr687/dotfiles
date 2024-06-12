@@ -46,7 +46,10 @@ return {
 		},
 		music = {
 			enabled = true,
-			sources = "Music,Spotify",
+			sources = {
+				Music = true,
+				Spotify = true,
+			},
 			max_expand_width = 240,
 			expand_height = 120,
 			corner_radius = 19,
@@ -57,6 +60,12 @@ return {
 				max_expand_width = 155,
 				expand_height = 56,
 				corner_radius = 15,
+			},
+			icons = {
+				prev = "􀊊",
+				next = "􀊌",
+				play = "􀊄",
+				pause = "􀊆",
 			},
 		},
 		wifi = {
