@@ -15,11 +15,14 @@ return {
 		local fg_dark = "#B4D0E9"
 		local fg_gutter = "#627E97"
 		local border = "#547998"
+
 		opts.transparent = transparent
 		opts.style = "night"
 		opts.styles = {
 			comments = { italic = true },
 			keywords = { italic = true },
+			functions = { italic = true },
+			variables = {},
 			sidebars = transparent and "transparent" or "dark",
 			floats = transparent and "transparent" or "dark",
 			hide_inactive_statusline = true,
@@ -43,6 +46,9 @@ return {
 			colors.fg_gutter = fg_gutter
 			colors.fg_sidebar = fg_dark
 		end
+
+		-- opts.on_highlights = function(hl, colors)
+		-- end
 	end,
 
 	config = function(_, opts)

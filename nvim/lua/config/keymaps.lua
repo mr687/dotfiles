@@ -5,6 +5,7 @@ local opts = { noremap = true, silent = true }
 
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')
+keymap.set("x", "p", [["_dP]])
 keymap.set("n", "<Leader>p", '"0p')
 keymap.set("n", "<Leader>P", '"0P')
 keymap.set("v", "<Leader>p", '"0p')
@@ -17,25 +18,12 @@ keymap.set("n", "<Leader>D", '"_D')
 keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
 
--- Increment/decrement
-keymap.set("n", "+", "<C-a>")
-keymap.set("n", "-", "<C-x>")
-
 -- Delete a word backwards
 keymap.set("n", "dw", 'vb"_d')
 
 -- Leave Insert Mode
 keymap.set("i", "jj", "<C-c>")
-
--- Select all
--- keymap.set("n", "<C-a>", "gg<S-v>G")
-
--- Disable continuations
-keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
-keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
-
--- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", opts)
+keymap.set("i", "kk", "<C-c>")
 
 -- New tab
 keymap.set("n", "te", ":tabedit", opts)
@@ -43,14 +31,15 @@ keymap.set("n", "to", ":tabnew<Return>", opts)
 keymap.set("n", "tx", ":tabclose<Return>", opts)
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
--- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
-keymap.set("n", "sx", ":close<Return>", opts)
 
-keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- move a blocks of text up/down with K/J in visual mode
+keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 
--- Diagnostics
-keymap.set("n", "<C-n>", function()
-	vim.diagnostic.goto_next()
-end, opts)
+-- Center the screen after scrolling up/down with Ctrl-u/d
+keymap.set("n", "<C-u>", "<C-u>zz")
+keymap.set("n", "<C-d>", "<C-d>zz")
+
+-- Center the screen on the next/prev search result with n/N
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")

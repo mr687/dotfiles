@@ -1,16 +1,58 @@
--- lazy.nvim specification.
-
 return {
 	"nvim-telescope/telescope.nvim",
+	tag = "0.1.6",
 	enabled = true,
-	cmd = { "Telescope" },
-
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope-fzf-native.nvim",
+		{
+			"nvim-telescope/telescope-frecency.nvim",
+			dependencies = {
+				"nvim-tree/nvim-web-devicons",
+			},
+		},
+		"akinsho/flutter-tools.nvim",
 	},
-
-	-- {{{ keymaps
-
+	cmd = { "Telescope" },
+	opts = function(_, opts)
+		local actions = require("telescope.actions")
+		opts.defaults = {
+			prompt_prefix = "💬 ",
+			selection_caret = "👉 ",
+			layout_strategy = "horizontal",
+			-- sorting_strategy = "ascending",
+			winblend = 0,
+			layout_config = {
+				prompt_position = "bottom",
+				height = 0.7,
+				width = 0.87,
+			},
+			mappings = {
+				i = {
+					["<C-j>"] = actions.move_selection_next,
+					["<C-k>"] = actions.move_selection_previous,
+				},
+			},
+		}
+		opts.pickers = {
+			colorscheme = { enable_preview = true },
+		}
+		opts.extensions = {
+			fzf = {
+				fuzzy = true, -- false will only do exact matching
+				override_generic_sorter = true, -- override the generic sorter
+				override_file_sorter = true, -- override the file sorter
+				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			},
+		}
+	end,
+	config = function(_, opts)
+		local telescope = require("telescope")
+		telescope.setup(opts)
+		telescope.load_extension("fzf")
+		telescope.load_extension("frecency")
+		telescope.load_extension("flutter")
+	end,
 	keys = function()
 		local cmdT = "<cmd>Telescope "
 		local cmdL = "<cmd>lua require('telescope')."
@@ -24,6 +66,11 @@ return {
 			{ "<leader>fb", cmdT .. "buffers<cr>", desc = "Telescope buffers" },
 			{ "<leader>fd", cmdT .. "diagnostics<cr>", desc = "Telescope diagnostics" },
 			{ "<leader>ff", cmdT .. "find_files<cr>", desc = "Telescope Find files" },
+			{
+				"<leader>fr",
+				cmdT .. "frecency workspace=CWD path_display={'shorten'}<cr>",
+				desc = "Telescope Find files",
+			},
 			{ "<leader>fg", cmdT .. "live_grep<cr>", desc = "Telescope Live Grep" },
 			{ "<leader>fh", cmdT .. "help_tags<cr>", desc = "Telecope Help files" },
 
@@ -43,47 +90,4 @@ return {
 			{ "<leader>Ls", cmdT .. "lsp_document_symbols<cr>", desc = "Telescope Document Symbols" },
 		}
 	end,
-
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ opts
-
-	opts = function(_, opts)
-		local actions = require("telescope.actions")
-		opts.defaults = {
-			layout_config = {
-				prompt_position = "top",
-				height = 0.7,
-				width = 0.87,
-			},
-			layout_strategy = "horizontal",
-			mappings = {
-				i = {
-					["<c-j>"] = actions.move_selection_next,
-					["<c-k>"] = actions.move_selection_previous,
-				},
-			},
-			prompt_prefix = " ",
-			selection_caret = " ",
-			sorting_strategy = "ascending",
-			winblend = 0,
-		}
-		opts.pickers = {
-			colorscheme = { enable_preview = true },
-		}
-		opts.extensions = {
-			file_browser = {
-				hijack_netrw = true,
-			},
-		}
-	end,
-
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ config
-
-	config = function(_, opts)
-		local telescope = require("telescope")
-		telescope.setup(opts)
-	end,
 }
-
--- ----------------------------------------------------------------------- }}}

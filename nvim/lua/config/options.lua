@@ -16,8 +16,8 @@ opt.breakindent = true
 opt.shiftwidth = 2
 opt.tabstop = 2
 
-opt.hlsearch = true
-opt.backup = false
+opt.hlsearch = false -- do not highlight all matches on previous search pattern
+opt.incsearch = true -- incrementally highlight searches as you type
 opt.showcmd = true
 opt.cmdheight = 1
 opt.laststatus = 2
@@ -39,16 +39,14 @@ opt.mouse = ""
 
 opt.termguicolors = true
 
+opt.swapfile = false -- do not use a swap file for the buffer
+opt.backup = false -- do not keep a backup file
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- set directory where undo files are stored
+opt.undofile = true -- save undo history to a file
+
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Add asterisks in block comments
 opt.formatoptions:append({ "r" })
-
-vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
-vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
-
-if vim.fn.has("nvim-0.8") == 1 then
-	opt.cmdheight = 0
-end

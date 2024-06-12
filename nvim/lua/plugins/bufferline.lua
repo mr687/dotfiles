@@ -2,6 +2,9 @@ return {
 	"akinsho/bufferline.nvim",
 	version = "*",
 	event = "VeryLazy",
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+	},
 	keys = {
 		{ "<a-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", desc = "Go to buffer 1" },
 		{ "<a-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", desc = "Go to buffer 2" },

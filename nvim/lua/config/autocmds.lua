@@ -1,45 +1,38 @@
-local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
+-- ignore capitalization mistakes
+vim.cmd("ca W w")
+vim.cmd("ca Q q")
+vim.cmd("ca WQ wq")
+vim.cmd("ca Wq wq")
 
--- Highlight on yank
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("BufReadPost", {
+	pattern = "*",
+	callback = function()
+		if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
+			vim.cmd('normal! g`"')
+		end
+	end,
+}) -- return to last edit position when opening files
+
+local HighlightYank = vim.api.nvim_create_augroup("HighlightYank", {})
 autocmd("TextYankPost", {
+	group = HighlightYank,
+	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({
 			higroup = "IncSearch",
-			timeout = "1000",
+			timeout = 500,
 		})
 	end,
-})
+}) -- highlight yanked text using the 'IncSearch' highlight group for 40ms
 
--- Remove whitespace on save
-autocmd("BufWritePre", {
-	pattern = "",
-	command = ":%s/\\s\\+$//e",
-})
-
--- Don"t auto commenting new lines
-autocmd("BufEnter", {
-	pattern = "",
-	command = "set fo-=c fo-=r fo-=o",
-})
-
-autocmd("Filetype", {
-	pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua" },
-	command = "setlocal shiftwidth=2 tabstop=2",
-})
-
--- Set colorcolumn
-autocmd("Filetype", {
-	pattern = { "python", "rst", "c", "cpp" },
-	command = "set colorcolumn=80",
-})
-
-autocmd("Filetype", {
-	pattern = { "gitcommit", "markdown", "text", "json", "jsonrc" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-	end,
-})
+local CleanOnSave = vim.api.nvim_create_augroup("CleanOnSave", {})
+autocmd({ "BufWritePre" }, {
+	group = CleanOnSave,
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
+}) -- remove trailing whitespace from all lines before saving a file)
 
 -- Turn off paste mode when leaving insert
 autocmd("InsertLeave", {
@@ -47,3 +40,11 @@ autocmd("InsertLeave", {
 	command = "set nopaste",
 })
 
+autocmd("FileType", {
+	pattern = { "dart" },
+	callback = function()
+		local keymap = vim.keymap
+		keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Goto Definition2" })
+		keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { desc = "Goto Declaration2" })
+	end,
+})

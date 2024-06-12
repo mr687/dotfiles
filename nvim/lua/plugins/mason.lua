@@ -6,15 +6,6 @@ return {
 			height = 0.75,
 			width = 0.75,
 		}
-		vim.list_extend(opts.ensure_installed, {
-			"stylua",
-			"selene",
-			"luacheck",
-			"shellcheck",
-			"shfmt",
-			"tailwindcss-language-server",
-			"typescript-language-server",
-			"css-lsp",
-		})
+		vim.list_extend(opts.ensure_installed, {})
 	end,
 }

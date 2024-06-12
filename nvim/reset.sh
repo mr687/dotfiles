@@ -1,7 +1,8 @@
 #!/bin/bash
 
-rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim
-rm -rf ~/.local/state/nvim
-rm -rf ~/.cache/nvim
-echo "Done"
+echo "removing nvim configs..."
+rm -rvf ~/.config/nvim
+rm -rvf ~/.local/share/nvim
+rm -rvf ~/.local/state/nvim
+rm -rvf ~/.cache/nvim
+echo "nvim configuration removed"

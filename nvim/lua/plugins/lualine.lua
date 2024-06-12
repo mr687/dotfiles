@@ -4,6 +4,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	enabled = true,
 	event = "VeryLazy",
+	dependencies = { "folke/tokyonight.nvim" },
 	config = function(_)
 		local lualine = require("lualine")
 
@@ -107,15 +108,6 @@ return {
 		})
 
 		ins_left({
-			"filename",
-			cond = conditions.buffer_not_empty,
-			color = {
-				fg = colors.magenta,
-				gui = "bold",
-			},
-		})
-
-		ins_left({
 			"branch",
 			icon = " ",
 			color = {
@@ -212,15 +204,15 @@ return {
 			always_visible = true,
 		})
 
-		ins_right({
-			"o:encoding", -- option component same as &encoding in viml
-			fmt = string.upper,
-			cond = conditions.hide_in_width,
-			color = {
-				fg = colors.green,
-				gui = "bold",
-			},
-		})
+		-- ins_right({
+		-- 	"o:encoding", -- option component same as &encoding in viml
+		-- 	fmt = string.upper,
+		-- 	cond = conditions.hide_in_width,
+		-- 	color = {
+		-- 		fg = colors.green,
+		-- 		gui = "bold",
+		-- 	},
+		-- })
 
 		ins_right({
 			"fileformat",
