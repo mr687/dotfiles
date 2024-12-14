@@ -6,6 +6,9 @@ return {
 			height = 0.75,
 			width = 0.75,
 		}
-		vim.list_extend(opts.ensure_installed, {})
+		vim.list_extend(opts.ensure_installed, {
+			"typescript-language-server",
+			"html-lsp",
+		})
 	end,
 }

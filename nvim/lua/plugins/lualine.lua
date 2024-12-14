@@ -2,7 +2,6 @@ return {
 	-- Statusline
 	-- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
 	"nvim-lualine/lualine.nvim",
-	enabled = true,
 	event = "VeryLazy",
 	dependencies = { "folke/tokyonight.nvim" },
 	config = function(_)

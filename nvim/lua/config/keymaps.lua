@@ -21,10 +21,6 @@ keymap.set("v", "<Leader>D", '"_D')
 -- Delete a word backwards
 keymap.set("n", "dw", 'vb"_d')
 
--- Leave Insert Mode
-keymap.set("i", "jj", "<C-c>")
-keymap.set("i", "kk", "<C-c>")
-
 -- New tab
 keymap.set("n", "te", ":tabedit", opts)
 keymap.set("n", "to", ":tabnew<Return>", opts)

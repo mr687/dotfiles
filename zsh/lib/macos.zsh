@@ -48,7 +48,7 @@ _evalcache /opt/homebrew/bin/brew shellenv
 _evalcache starship init zsh
 
 # FLUTTER SDK
-flutter_version=3_7_12
+flutter_version=3_24_3
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"
@@ -67,17 +67,20 @@ export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 
 # PHP
-export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/php@8.1/include"
+export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/php@8.2/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/php@8.2/include"
 
 # GOLANG
-export GO_VERSION="1.22.2";
+export GO_VERSION="1.23.2";
 export GOROOT="$HOME/.dev/.go/go$GO_VERSION"
 export GOPATH="$HOME/.dev/.go/lib"
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 alias goworkspaces="cd $GOPATH"
+
+# PYTHON
+export PATH="~/.pyenv/versions/3.6.15/bin:${PATH}"
 
 # RUST
 source "$HOME/.cargo/env"
@@ -86,6 +89,9 @@ source "$HOME/.cargo/env"
 export GEM_HOME="$HOME/.gem"
 export PATH="$GEM_HOME/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
+
+# METASPLOIT FRAMEWORK
+export PATH="/opt/metasploit-framework/bin:$PATH"
 
 # export PATH="$HOME/.jenv/bin:$PATH"
 # _evalcache jenv init -
