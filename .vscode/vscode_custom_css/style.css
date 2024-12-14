@@ -1,0 +1,244 @@
+/* .mac,
+.windows,
+.linux {
+  font-family: "MesloLGS Nerd Font Mono", "SF Mono", monospace;
+} */
+
+/* ------------ Title Bar ------------ */
+.monaco-workbench .part.titlebar {
+  border-bottom: 1px solid #181c20 !important;
+}
+
+.monaco-workbench .part.titlebar > .titlebar-container > .titlebar-center > .window-title {
+  font-size: 14px !important;
+}
+
+/* ------------ Command Palette ------------ */
+.quick-input-titlebar {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.quick-input-widget {
+  background-color: var(--vscode-quickInput-background) !important;
+  border-radius: 14px !important;
+  min-height: 58px !important;
+  box-shadow: 0px 2px 10px 4px var(--vscode-widget-shadow) !important;
+}
+
+.quick-input-widget.show-file-icons {
+  top: 25% !important;
+  padding-bottom: 4px;
+}
+
+.quick-input-list {
+  padding: 0px 2px 0px 2px;
+  margin-top: 0;
+}
+
+.quick-input-list [class^="monaco-list list_id"] .monaco-list-rows {
+  background: var(--vscode-quickInput-background) !important;
+}
+
+.quick-input-list .monaco-list:not(.drop-target):not(.dragging) .monaco-list-row:hover:not(.selected):not(.focused) {
+  background-color: var(--vscode-quickInputList-focusBackground) !important;
+}
+
+.quick-input-list [class^="monaco-list list_id"] .monaco-list-row.focused {
+  background-color: var(--vscode-quickInputList-focusBackground) !important;
+}
+
+.quick-input-list .quick-input-list-entry {
+  padding: 0 2px;
+  border-top-color: var(--vscode-quickInputList-focusBackground) !important;
+}
+
+.monaco-workbench .synthetic-focus {
+  outline: var(--vscode-quickInput-background) !important;
+}
+
+.quick-input-and-message .monaco-inputbox > .ibwrapper {
+  background: var(--vscode-quickInput-background) !important;
+  border-color: var(--vscode-quickInput-background) !important;
+  border-width: 0 !important;
+  width: calc(100% - 3px * 2);
+  padding: 3px;
+}
+
+.quick-input-widget.show-checkboxes .quick-input-box,
+.quick-input-widget.show-checkboxes .quick-input-message {
+  margin-left: 0 !important;
+}
+
+.quick-input-and-message .monaco-inputbox.idle {
+  border-color: var(--vscode-quickInput-background) !important;
+  background-color: var(--vscode-quickInput-background) !important;
+}
+
+.quick-input-and-message .monaco-inputbox > .ibwrapper > .input {
+  border-radius: 8px !important;
+  padding: 12px;
+  background-color: var(--vscode-quickInput-background) !important;
+  border: 1px solid var(--vscode-quickInputList-focusBackground);
+  margin-top: -3px;
+}
+
+.quick-input-list .monaco-list-row {
+  border-radius: 4px;
+}
+
+.quick-input-list .quick-input-list-entry-action-bar .action-label.codicon {
+  margin-right: 0;
+}
+
+.quick-input-action {
+  display: flex;
+  align-items: center;
+  margin-left: 2px;
+}
+
+.quick-input-count {
+  right: 14px;
+}
+
+/* ------------ Command Center ------------ */
+.monaco-workbench .part.titlebar > .titlebar-container > .titlebar-center > .window-title > .command-center.hide {
+  visibility: visible !important;
+}
+
+.monaco-workbench
+  .part.titlebar
+  > .titlebar-container
+  > .titlebar-center
+  > .window-title
+  > .command-center
+  > .monaco-toolbar
+  > .monaco-action-bar
+  > .actions-container
+  > .action-item:not(:has(.monaco-toolbar)) {
+  display: none !important;
+}
+
+/* ------------ Sidebar ------------ */
+.monaco-workbench .part > .composite.title > .title-actions {
+  padding-left: 0;
+  margin-left: -16px;
+}
+
+.monaco-workbench .part.sidebar .title-actions .action-item {
+  margin-right: 0;
+}
+
+.monaco-list.mouse-support .monaco-list-row {
+  border-radius: 6px;
+  width: calc(100% - 8px);
+  padding-right: 4px !important;
+  padding-left: 0 !important;
+  margin-left: 4px !important;
+}
+
+.show-file-icons .folder-icon::before,
+.show-file-icons .rootfolder-icon::before {
+  filter: brightness(0.6);
+}
+
+.monaco-workbench .monaco-list:not(.element-focused):focus:before,
+.part.sidebar .monaco-list.mouse-support.selection-none.last-focused::before,
+.part.sidebar .welcome-view-content:focus {
+  outline-color: transparent !important;
+}
+
+/* ------------ Welcome Screen ------------ */
+.monaco-workbench .part.editor > .content .editor-group-container > .editor-group-watermark {
+  max-width: 100% !important;
+}
+
+.monaco-workbench .part.editor > .content .editor-group-container > .editor-group-watermark .shortcuts {
+  display: none;
+}
+
+.monaco-workbench .part.editor > .content .editor-group-container > .editor-group-watermark .letterpress {
+  background: none !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: contain !important;
+  max-width: 75%;
+}
+
+/* ------------ Editor Screen ------------ */
+.monaco-editor .peekview-widget .head .peekview-title {
+  flex: 5 !important;
+}
+
+.line-numbers {
+  transform: scale(1);
+  transition: all 10 linear;
+}
+
+.line-numbers.active-line-number {
+  transform: scale(1.25) translateX(-3px);
+  animation: 0.2s ease-out scaleSize;
+}
+
+@keyframes scaleSize {
+  0% {
+    transform: scale(0.75);
+  }
+
+  100% {
+    transform: scale(1.35) translateX(-3px);
+  }
+}
+
+#bg-blur {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  transition: all 1s ease-in;
+}
+
+/* ------------ Find Widget ------------ */
+.monaco-editor .find-widget {
+  border-radius: 4px;
+  padding-top: 1px !important;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+  top: 3px !important;
+}
+
+.monaco-editor .find-widget .monaco-sash {
+  display: none;
+}
+
+.monaco-editor .find-widget .button.toggle {
+  left: 2px;
+  outline: none !important;
+}
+
+.monaco-editor .find-widget .button.toggle:hover {
+  background-color: var(--vscode-editorWidget-background) !important;
+}
+
+/* ------------ Notifications ------------ */
+.notifications-list-container .monaco-list.mouse-support .monaco-list-row {
+  border-radius: 0;
+  width: 100%;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* ------------ Terminal ------------ */
+.monaco-workbench .pane-body.integrated-terminal .terminal-tabs-entry.is-active:before {
+  display: block;
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+}

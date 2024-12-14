@@ -1,9 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	enabled = true,
 	opts = {
 		-- A list of parser names, or "all"
-		ensure_installed = {},
+		ensure_installed = { "sql" },
 		highlight = {
 			enable = true,
 			use_languagetree = true,

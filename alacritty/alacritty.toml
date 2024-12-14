@@ -1,8 +1,5 @@
-import = [
-  "~/.config/alacritty/themes/tokyonight_night.toml"
-]
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = ["-l"]
 
@@ -22,8 +19,8 @@ padding.x = 15
 padding.y = 15
 
 decorations = "Buttonless"
-opacity = 0.8
-blur = true
+opacity = 1
+blur = false
 
 option_as_alt = "Both"
 
@@ -32,17 +29,15 @@ size = 12
 normal.family = "MesloLGS Nerd Font Mono"
 normal.style = "Regular"
 
-# bold.family = "MesloLGS Nerd Font Mono"
-# bold.style = "Bold"
-
-# italic.family = "MesloLGS Nerd Font Mono"
-# italic.style = "Italic"
-
-# bold_italic.family = "MesloLGS Nerd Font Mono"
-# bold_italic.style = "BoldItalic"
-
 [colors]
 draw_bold_text_with_bright_colors = true
 
 [selection]
 save_to_clipboard = false
+
+[general]
+import = [
+  "~/.config/alacritty/themes/tokyonight_night.toml"
+]
+
+[terminal]
