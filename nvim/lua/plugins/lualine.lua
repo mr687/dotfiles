@@ -2,6 +2,7 @@ return {
 	-- Statusline
 	-- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
 	"nvim-lualine/lualine.nvim",
+	enabled = true,
 	event = "VeryLazy",
 	dependencies = { "folke/tokyonight.nvim" },
 	config = function(_)
@@ -107,8 +108,17 @@ return {
 		})
 
 		ins_left({
+			"filename",
+			cond = conditions.buffer_not_empty,
+			color = {
+				fg = colors.magenta,
+				gui = "bold",
+			},
+		})
+
+		ins_left({
 			"branch",
-			icon = " ",
+			icon = "",
 			color = {
 				fg = colors.blue,
 				gui = "bold",
@@ -135,6 +145,31 @@ return {
 				},
 			},
 			cond = conditions.hide_in_width,
+		})
+
+		ins_left({
+			"copilot",
+			show_colors = true,
+			show_loading = true,
+			symbols = {
+				status = {
+					icons = {
+						enabled = " ",
+						sleep = " ", -- auto-trigger disabled
+						disabled = " ",
+						warning = " ",
+						unknown = " ",
+					},
+					hl = {
+						enabled = require("copilot-lualine.colors").get_hl_value(0, "DiagnosticWarn", "fg"), -- hl value
+						sleep = "#AEB9D0",
+						disabled = "#6272A4",
+						warning = "#FFB86C",
+						unknown = "#FF5555",
+					},
+				},
+				spinners = "moon",
+			},
 		})
 
 		-- Insert mid section. You can make any number of sections in neovim :)
@@ -170,7 +205,7 @@ return {
 				end
 				return msg
 			end,
-			icon = " LSP:",
+			icon = "",
 			color = {
 				fg = colors.cyan,
 				gui = "bold",
@@ -231,13 +266,13 @@ return {
 			},
 		})
 
-		ins_right({
-			"progress",
-			color = {
-				fg = colors.fg,
-				gui = "bold",
-			},
-		})
+		-- ins_right({
+		-- 	"progress",
+		-- 	color = {
+		-- 		fg = colors.fg,
+		-- 		gui = "bold",
+		-- 	},
+		-- })
 
 		-- Now don"t forget to initialize lualine
 		lualine.setup(config)

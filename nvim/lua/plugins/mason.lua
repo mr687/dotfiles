@@ -8,6 +8,7 @@ return {
 		}
 		vim.list_extend(opts.ensure_installed, {
 			"typescript-language-server",
+			"prisma-language-server",
 			"html-lsp",
 		})
 	end,

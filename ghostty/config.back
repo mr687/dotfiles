@@ -1,0 +1,18 @@
+font-family = "MesloLGS Nerd Font Mono"
+
+theme = "tokyonight"
+bold-is-bright = "true"
+
+macos-icon-frame = "beige"
+window-decoration = "false"
+
+cursor-style = "block"
+cursor-style-blink = "true"
+
+window-padding-balance = "true"
+
+shell-integration = "zsh"
+
+auto-update = "check"
+auto-update-channel = "stable"
+

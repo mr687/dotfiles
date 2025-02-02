@@ -28,6 +28,9 @@ keymap.set("n", "tx", ":tabclose<Return>", opts)
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
+keymap.set("n", "sv", ":vsplit<Return>", opts)
+keymap.set("n", "sh", ":split<Return>", opts)
+
 -- move a blocks of text up/down with K/J in visual mode
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
