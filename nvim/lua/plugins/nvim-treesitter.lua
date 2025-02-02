@@ -2,7 +2,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	opts = {
 		-- A list of parser names, or "all"
-		ensure_installed = { "sql" },
+		ensure_installed = { "sql", "prisma" },
 		highlight = {
 			enable = true,
 			use_languagetree = true,

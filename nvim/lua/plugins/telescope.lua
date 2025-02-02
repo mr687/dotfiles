@@ -1,16 +1,20 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	enabled = false,
 	tag = "0.1.6",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-fzf-native.nvim",
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+		},
 		{
 			"nvim-telescope/telescope-frecency.nvim",
 			dependencies = {
 				"nvim-tree/nvim-web-devicons",
 			},
 		},
-		"akinsho/flutter-tools.nvim",
+		-- "akinsho/flutter-tools.nvim",
 	},
 	cmd = { "Telescope" },
 	opts = function(_, opts)
@@ -50,7 +54,7 @@ return {
 		telescope.setup(opts)
 		telescope.load_extension("fzf")
 		telescope.load_extension("frecency")
-		telescope.load_extension("flutter")
+		-- telescope.load_extension("flutter")
 		-- telescope.load_extension("notify")
 	end,
 	keys = function()

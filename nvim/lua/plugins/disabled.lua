@@ -7,4 +7,5 @@ return {
 	{ "echasnovski/mini.ai", enabled = false },
 	{ "echasnovski/mini.bracketed", enabled = false },
 	{ "catppuccin/nvim", enabled = false },
+	{ "ibhagwan/fzf-lua", enabled = true },
 }
