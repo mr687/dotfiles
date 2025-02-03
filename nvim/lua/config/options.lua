@@ -50,3 +50,5 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Add asterisks in block comments
 opt.formatoptions:append({ "r" })
+
+vim.g.lazyvim_prettier_needs_config = false
