@@ -5,5 +5,9 @@ return {
 	lazy = false,
 	opts = {
 		scroll = { enabled = false },
+		picker = { enabled = false },
+		dashboard = { enabled = true },
+		scope = { enabled = true },
+		indent = { enabled = false },
 	},
 }
