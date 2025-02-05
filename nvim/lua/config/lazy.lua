@@ -19,10 +19,10 @@ require("lazy").setup({
 			"LazyVim/LazyVim",
 			import = "lazyvim.plugins",
 			opts = {
-				colorscheme = "tokyonight",
+				-- colorscheme = "tokyonight",
 				news = {
 					lazyvim = true,
-					neovim = false,
+					neovim = true,
 				},
 			},
 		},
@@ -35,7 +35,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.go" },
 
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
-		-- { import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.formatting.prettier" },
 		{ import = "lazyvim.plugins.extras.formatting.biome" },
 
 		{ import = "lazyvim.plugins.extras.coding.luasnip" },
@@ -50,7 +50,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.editor.snacks_picker" },
 
 		{ import = "lazyvim.plugins.extras.ui.mini-indentscope" },
-		{ import = "lazyvim.plugins.extras.ui.smear-cursor" },
+		-- { import = "lazyvim.plugins.extras.ui.smear-cursor" },
 		{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
 		{ import = "lazyvim.plugins.extras.ai.copilot" },
@@ -62,7 +62,6 @@ require("lazy").setup({
 	},
 	defaults = {
 		lazy = true,
-		version = false, -- always use the latest git commit
 	},
 	checker = {
 		-- automatically check for plugin updates

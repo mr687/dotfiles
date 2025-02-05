@@ -17,7 +17,7 @@ return {
 		local border = "#547998"
 
 		opts.transparent = transparent
-		opts.style = "night"
+		opts.style = "storm"
 		opts.styles = {
 			comments = { italic = true },
 			keywords = { italic = true },
@@ -46,9 +46,6 @@ return {
 			colors.fg_gutter = fg_gutter
 			colors.fg_sidebar = fg_dark
 		end
-
-		-- opts.on_highlights = function(hl, colors)
-		-- end
 	end,
 
 	config = function(_, opts)
