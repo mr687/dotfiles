@@ -30,6 +30,8 @@ alias cat="bat"
 alias builtinman="man"
 alias man="tldr"
 
+alias ai="gh copilot"
+
 alias cd="z"
 
 alias c="code ."
@@ -48,7 +50,8 @@ _evalcache /opt/homebrew/bin/brew shellenv
 _evalcache starship init zsh
 
 # FLUTTER SDK
-flutter_version=3_24_3
+# flutter_version=3_24_3
+flutter_version=3_7_12
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"

@@ -1,1 +1,4 @@
-return { "AndreM222/copilot-lualine" }
+return {
+	"AndreM222/copilot-lualine",
+	event = "InsertEnter",
+}

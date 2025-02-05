@@ -40,5 +40,5 @@ keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<C-d>", "<C-d>zz")
 
 -- Center the screen on the next/prev search result with n/N
-keymap.set("n", "n", "nzzzv")
-keymap.set("n", "N", "Nzzzv")
+-- keymap.set("n", "n", "nzzzv")
+-- keymap.set("n", "N", "Nzzzv")
