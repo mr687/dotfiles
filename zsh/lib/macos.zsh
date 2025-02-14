@@ -44,17 +44,31 @@ killport() {
   kill -9 "${pid[@]}"
 }
 
+# TMUX aliases
+ta() {
+  tmux attach -t $1 || tmux new -s $1
+}
+
+alias tk='tmux kill-session -t'
+alias tls='tmux ls'
+
+tn() {
+  tmux attach -t $1 || tmux new -s $1
+}
+
+
 export NODE_NO_WARNINGS=1
 
 _evalcache /opt/homebrew/bin/brew shellenv
 _evalcache starship init zsh
 
 # FLUTTER SDK
-# flutter_version=3_24_3
-flutter_version=3_7_12
+flutter_version=3_24_3
+# flutter_version=3_7_12
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
-export PATH="$PATH:$HOME/.pub-cache/bin"
+export PATH="$HOME/.dev/.flutter/$flutter_version/bin/cache/dart-sdk:$PATH"
+# export PATH="$PATH:$HOME/.pub-cache/bin"
 alias fr="flutter run"
 alias fb="flutter pub run build_runner build --delete-conflicting-outputs"
 
