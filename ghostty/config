@@ -30,7 +30,7 @@ background-blur = true
 
 # Font and cursor settings
 font-family = MesloLGDZ
-font-size = 16
+font-size = 12
 bold-is-bright = true
 cursor-style = block
 
@@ -57,3 +57,4 @@ palette = 12=#d6acff
 palette = 13=#ff92df
 palette = 14=#a4ffff
 palette = 15=#ffffff
+
