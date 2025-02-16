@@ -24,7 +24,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 0
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -53,12 +53,12 @@ on-focus-changed = "move-mouse window-lazy-center"
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 18
-inner.vertical = 18
-outer.left = 18
-outer.bottom = 18
-outer.top = 18
-outer.right = 18
+inner.horizontal = 12
+inner.vertical = 12
+outer.left = 12
+outer.bottom = 12
+outer.top = 12
+outer.right = 12
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -183,7 +183,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ["move-node-to-workspace T", "layout tiling"]
+run = "move-node-to-workspace T"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
