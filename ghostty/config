@@ -25,7 +25,7 @@ mouse-hide-while-typing = true
 copy-on-select = true
 
 # Background and transparency settings
-background-opacity = 0.85
+background-opacity = 0.75
 background-blur = true
 
 # Font and cursor settings
