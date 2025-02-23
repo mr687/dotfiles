@@ -7,3 +7,5 @@ tar -xvf shell-color-scripts.tar.gz
 cd shell-color-scripts-main
 make install
 cp ./completions/_colorscript ~/.dotfiles/zsh/autoloaded/
+
+# curl -L shell-color-scripts.tar.gz https://github.com/shreyas-a-s/shell-color-scripts/archive/refs/heads/main.tar.gz
