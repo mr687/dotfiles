@@ -63,8 +63,8 @@ _evalcache /opt/homebrew/bin/brew shellenv
 _evalcache starship init zsh
 
 # FLUTTER SDK
-flutter_version=3_24_3
-# flutter_version=3_7_12
+# flutter_version=3_24_3
+flutter_version=3_7_12
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin/cache/dart-sdk:$PATH"
@@ -73,7 +73,12 @@ alias fr="flutter run"
 alias fb="flutter pub run build_runner build --delete-conflicting-outputs"
 
 # ANDROID SDK
-export ANDROID_HOME="$HOME/.dev/.android"
+# export ANDROID_HOME="$HOME/.dev/.android"
+# export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+# export PATH="$ANDROID_HOME/platform-tools:$PATH"
+# export PATH="$ANDROID_HOME/emulator:$PATH"
+
+export ANDROID_HOME="$HOME/.dev/.android-studio/sdk"
 export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$ANDROID_HOME/emulator:$PATH"
@@ -90,11 +95,15 @@ export LDFLAGS="-L/opt/homebrew/opt/php@8.2/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.2/include"
 
 # GOLANG
-export GO_VERSION="1.23.2";
+export GO_VERSION="1.24.4"
 export GOROOT="$HOME/.dev/.go/go$GO_VERSION"
-export GOPATH="$HOME/.dev/.go/lib"
+export GOPATH="$HOME/.dev/.go/.lib$GO_VERSION"
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 alias goworkspaces="cd $GOPATH"
+
+# GOLANG BREW
+# export GOPATH="$HOME/go"
+# export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # PYTHON
 export PATH="~/.pyenv/versions/3.6.15/bin:${PATH}"

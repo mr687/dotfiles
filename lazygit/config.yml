@@ -4,11 +4,10 @@ customCommands:
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
-    subprocess: true
-
+    output: terminal
   - key: "<c-l>"
     description: "Pick AI commit"
     command: 'lazycopilot commit gen -n -S wise > .git/COMMIT_EDITMSG && nvim .git/COMMIT_EDITMSG && [ -s .git/COMMIT_EDITMSG ] && git commit -F .git/COMMIT_EDITMSG || echo "Commit message is empty, commit aborted."'
     context: "files"
-    subprocess: true
     loadingText: "Generating commit..."
+    output: terminal

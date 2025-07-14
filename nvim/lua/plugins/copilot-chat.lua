@@ -27,7 +27,8 @@ return {
 		event = "VeryLazy",
 		build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {
-			model = "claude-3.5-sonnet", -- default model is gpt-4o
+			model = "claude-3.7-sonnet", -- default model is gpt-4o
+			-- model = "claude-3.5-sonnet", -- default model is gpt-4o
 			-- model = "gpt-4o", -- default model is gpt-4o
 			agent = "copilot",
 			question_header = "## User ",

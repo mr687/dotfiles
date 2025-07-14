@@ -1,16 +1,48 @@
 [user]
 	name = mr687
 	email = 26916086+mr687@users.noreply.github.com
+	signingkey = /Users/macbench/.ssh/id_ed25519_git_sign_key.pub
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
 
 [core]
+  compression = 9
+  whitespace = error
+  preloadindex = true
+	ignorecase = false
 	excludesfile = ~/.gitignore
 	editor = nvim
-	ignorecase = false
   pager = delta
+
+[init]
+  defaultBranch = main
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[advice]
+  addEmptyPathSpec = false
+  pushNonFastForward = false
+  statusHints = false
+
+[pull]
+  default = current
+  rebase = true
 
 [push]
   default = simple
+  followTags = true
   autoSetupRemote = true
+
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
 
 [color]
   status = auto
@@ -19,10 +51,10 @@
   interactive = auto
   grep = auto
   ui = auto
-  
+
 [hub]
   protocol = https
-  
+
 [github]
 	user = mr687
 
@@ -32,7 +64,7 @@
 
 [difftool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
@@ -54,8 +86,11 @@
 [merge]
   conflictstyle = diff3
 [credential "https://github.com"]
-	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[url "git@github.com:mr687/"]
+  insteadOf = "my:"
+[url "git@github.com:"]
+  insteadOf = "gh:"
