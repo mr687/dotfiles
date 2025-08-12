@@ -1,9 +1,11 @@
 # vim: ft=ghostty
+# refresh shortcut: CMD+SHIFT+,
 
 term = xterm-256color
 
 # shell
 shell-integration = "zsh"
+shell-integration-features = true
 
 # ghostty
 auto-update = "check"
@@ -12,49 +14,38 @@ auto-update-channel = "stable"
 theme = "tokyonight"
 
 # Window settings
-window-decoration = false
+window-decoration = "auto"
 window-inherit-working-directory = true
-window-padding-balance = true
+
+# window-padding-balance = false
+window-padding-x = 10
+window-padding-y = 10
+
 window-theme = dark
-window-save-state = always
+window-save-state = "default"
 window-width = 1920
 window-height = 1080
+window-vsync = true
+
+# MacOS specific settings
+macos-titlebar-style = "hidden"
+macos-window-shadow = true
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+macos-icon = "glass"
 
 # Mouse settings
 mouse-hide-while-typing = true
-copy-on-select = true
+copy-on-select = false
 
 # Background and transparency settings
-background-opacity = 0.75
+background-opacity = 0.8
 background-blur = true
 
 # Font and cursor settings
-font-family = MesloLGDZ
-font-size = 12
+font-family = "MesloLGSDZ"
+font-size = 14
 bold-is-bright = true
+
 cursor-style = block
-
-# Color scheme (Dracula-inspired dark theme)
-foreground = #f8f8f2
-selection-foreground = #ffffff
-selection-background = #44475a
-cursor-color = #f8f8f2
-
-# ANSI Colors (Dracula)
-palette = 0=#21222c
-palette = 1=#ff5555
-palette = 2=#50fa7b
-palette = 3=#f1fa8c
-palette = 4=#bd93f9
-palette = 5=#ff79c6
-palette = 6=#8be9fd
-palette = 7=#f8f8f2
-palette = 8=#6272a4
-palette = 9=#ff6e6e
-palette = 10=#69ff94
-palette = 11=#ffffa5
-palette = 12=#d6acff
-palette = 13=#ff92df
-palette = 14=#a4ffff
-palette = 15=#ffffff
-
+cursor-opacity = 1.0

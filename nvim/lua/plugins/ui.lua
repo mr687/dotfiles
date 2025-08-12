@@ -91,7 +91,7 @@ return {
           {
               text = {
                   [[
-  Copyright (c) 2024 - M Λ C R O developers
+        dapino.
               ]],
 
                   hl = "NonText",
