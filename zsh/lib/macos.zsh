@@ -31,11 +31,13 @@ alias builtinman="man"
 alias man="tldr"
 
 alias ai="gh copilot"
+alias commit="opencode -p \"commit the changes, commit message must explain why, follow conventional commit rules. without copyright by opencode\""
 
 alias cd="z"
 
 alias c="code ."
 alias vim="nvim"
+alias vi="nvim"
 
 alias random32="openssl rand -base64 24 | tr -d '\n' ; echo"
 alias flushdns="sudo killall -HUP mDNSResponder"
@@ -55,6 +57,8 @@ alias tls='tmux ls'
 tn() {
   tmux attach -t $1 || tmux new -s $1
 }
+
+alias mux=tmuxinator
 
 
 export NODE_NO_WARNINGS=1
@@ -118,6 +122,9 @@ export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 
 # METASPLOIT FRAMEWORK
 export PATH="/opt/metasploit-framework/bin:$PATH"
+
+# PODMAN CLI
+export PATH="/opt/podman/bin:$PATH"
 
 # export PATH="$HOME/.jenv/bin:$PATH"
 # _evalcache jenv init -
