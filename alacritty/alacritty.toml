@@ -1,4 +1,3 @@
-
 [terminal.shell]
 program = "/bin/zsh"
 args = ["-l"]
@@ -15,29 +14,42 @@ dimensions.lines = 10
 position.x = 1248
 position.y = 1033
 
-padding.x = 15
-padding.y = 15
+dynamic_padding = true
+padding.x = 10
+padding.y = 10
 
 decorations = "Buttonless"
-opacity = 1
-blur = false
+opacity = 0.9
+blur = true
 
 option_as_alt = "Both"
+decorations_theme_variant = "None"
+
+[scrolling]
+history = 10000
 
 [font]
-size = 12
+size = 14
 normal.family = "MesloLGS Nerd Font Mono"
 normal.style = "Regular"
 
+[cursor]
+style.shape = "Block"
+style.blinking = "Never"
+
+[mouse]
+hide_when_typing = true
+
 [colors]
 draw_bold_text_with_bright_colors = true
+transparent_background_colors = false
 
 [selection]
 save_to_clipboard = false
 
 [general]
-import = [
-  "~/.config/alacritty/themes/tokyonight_night.toml"
-]
+import = ["~/.config/alacritty/themes/tokyonight_night.toml"]
+live_config_reload = true
+ipc_socket = false
 
 [terminal]

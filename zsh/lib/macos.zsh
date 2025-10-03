@@ -7,7 +7,7 @@
 
 export GPG_TTY=$(tty)
 export TERM="xterm-256color"
-[[ -n $TMUX ]] && export TERM="screen-256color"
+# [[ -n $TMUX ]] && export TERM="screen-256color"
 
 #
 # GNU Core Utils
@@ -18,6 +18,8 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 [[ ! -f $DOTFILE_DIR/zsh/custom_function ]] || . $DOTFILE_DIR/zsh/custom_function
 
 alias reload="source ${HOME}/.zshrc"
+
+export EZA_CONFIG_DIR="${HOME}/.config/eza"
 
 alias ls="eza --color=always --long --git --no-permissions --no-user"
 alias ll="ls -a"
@@ -131,6 +133,8 @@ export PATH="/opt/podman/bin:$PATH"
 
 _evalcache fzf --zsh
 
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --ansi --padding 1,1 --color=border:#bb9af7"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
@@ -169,3 +173,12 @@ _evalcache thefuck --alias fk
 
 # Zoxide
 _evalcache zoxide init zsh
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

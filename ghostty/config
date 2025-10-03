@@ -11,7 +11,7 @@ shell-integration-features = true
 auto-update = "check"
 auto-update-channel = "stable"
 
-theme = "tokyonight"
+theme = tokyonight
 
 # Window settings
 window-decoration = "auto"
@@ -25,27 +25,26 @@ window-theme = dark
 window-save-state = "default"
 window-width = 1920
 window-height = 1080
-window-vsync = true
+# window-vsync = true
 
 # MacOS specific settings
 macos-titlebar-style = "hidden"
 macos-window-shadow = true
 macos-auto-secure-input = true
 macos-secure-input-indication = true
-macos-icon = "glass"
+macos-icon = "retro"
 
 # Mouse settings
 mouse-hide-while-typing = true
 copy-on-select = false
 
 # Background and transparency settings
-background-opacity = 0.8
+background-opacity = 0.85
 background-blur = true
 
 # Font and cursor settings
-font-family = "MesloLGSDZ"
 font-size = 14
-bold-is-bright = true
+bold-is-bright = false
 
 cursor-style = block
 cursor-opacity = 1.0

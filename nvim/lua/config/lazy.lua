@@ -28,7 +28,7 @@ require("lazy").setup({
 		{ import = "plugins" },
 	},
 	defaults = {
-		lazy = true,
+		lazy = false,
 	},
 	checker = {
 		-- automatically check for plugin updates
@@ -45,37 +45,14 @@ require("lazy").setup({
 		notify = false,
 	},
 	performance = {
-		cache = {
-			enabled = true,
-		},
 		rtp = {
 			-- disable some rtp plugins
 			disabled_plugins = {
-				"2html_plugin",
-				"getscript",
-				"getscriptPlugin",
 				"gzip",
-				"logipat",
-				"netrw",
-				"netrwPlugin",
-				"netrwSettings",
-				"netrwFileHandlers",
-				"matchit",
-				"tar",
+				"tohtml",
 				"tarPlugin",
-				"rrhelper",
-				"spellfile_plugin",
-				"vimball",
-				"vimballPlugin",
-				"zip",
 				"zipPlugin",
 				"tutor",
-				"rplugin",
-				"synmenu",
-				"optwin",
-				"compiler",
-				"bugreport",
-				"ftplugin",
 			},
 		},
 	},

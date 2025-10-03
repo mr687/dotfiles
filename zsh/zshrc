@@ -2,7 +2,12 @@
 
 # zmodload zsh/zprof
 
-export EDITOR="nvim"
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 export DOTFILE_DIR=${ZDOTDIR:-$HOME}/.dotfiles
 export ZSHCONFIG=$DOTFILE_DIR/zsh
@@ -42,3 +47,8 @@ compinit
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/macbench/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/macbench/.lmstudio/bin"
+# End of LM Studio CLI section
+

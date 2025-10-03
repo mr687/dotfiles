@@ -11,43 +11,43 @@ end
 
 return {
 	"monaqa/dial.nvim",
-	enabled = true,
+	enabled = false,
 	keys = {
-		{
-			"<leader>a",
-			function()
-				return dial(true)
-			end,
-			expr = true,
-			desc = "Increment",
-			mode = { "n", "v" },
-		},
-		{
-			"<leader>ad",
-			function()
-				return dial(false)
-			end,
-			expr = true,
-			desc = "Decrement",
-			mode = { "n", "v" },
-		},
-		{
-			"g<leader>a",
-			function()
-				return dial(true, true)
-			end,
-			expr = true,
-			desc = "Increment",
-			mode = { "n", "v" },
-		},
-		{
-			"g<leader>ad",
-			function()
-				return dial(false, true)
-			end,
-			expr = true,
-			desc = "Decrement",
-			mode = { "n", "v" },
-		},
+		-- {
+		-- 	"<leader>a",
+		-- 	function()
+		-- 		return dial(true)
+		-- 	end,
+		-- 	expr = true,
+		-- 	desc = "Increment",
+		-- 	mode = { "n", "v" },
+		-- },
+		-- {
+		-- 	"<leader>ad",
+		-- 	function()
+		-- 		return dial(false)
+		-- 	end,
+		-- 	expr = true,
+		-- 	desc = "Decrement",
+		-- 	mode = { "n", "v" },
+		-- },
+		-- {
+		-- 	"g<leader>a",
+		-- 	function()
+		-- 		return dial(true, true)
+		-- 	end,
+		-- 	expr = true,
+		-- 	desc = "Increment",
+		-- 	mode = { "n", "v" },
+		-- },
+		-- {
+		-- 	"g<leader>ad",
+		-- 	function()
+		-- 		return dial(false, true)
+		-- 	end,
+		-- 	expr = true,
+		-- 	desc = "Decrement",
+		-- 	mode = { "n", "v" },
+		-- },
 	},
 }
