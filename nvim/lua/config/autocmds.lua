@@ -15,18 +15,6 @@ autocmd("BufReadPost", {
 	end,
 }) -- return to last edit position when opening files
 
-local HighlightYank = vim.api.nvim_create_augroup("HighlightYank", {})
-autocmd("TextYankPost", {
-	group = HighlightYank,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 500,
-		})
-	end,
-}) -- highlight yanked text using the 'IncSearch' highlight group for 40ms
-
 local CleanOnSave = vim.api.nvim_create_augroup("CleanOnSave", {})
 autocmd({ "BufWritePre" }, {
 	group = CleanOnSave,

@@ -17,3 +17,7 @@ fi
 # Home-made scripts
 export PATH="$PATH:${HOME}/.bin"
 export PATH="$PATH:${HOME}/.local/bin"
+. "/Users/macbench/.local/share/bob/env/env.sh"
+
+export PATH="/Users/macbench/.bun/bin:$PATH"
+

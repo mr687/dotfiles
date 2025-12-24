@@ -22,9 +22,13 @@ window-padding-x = 10
 window-padding-y = 10
 
 window-theme = dark
-window-save-state = "default"
+window-save-state = "never"
+
 window-width = 1920
 window-height = 1080
+window-position-x = 1248
+window-position-y = 1033
+
 # window-vsync = true
 
 # MacOS specific settings
@@ -39,12 +43,16 @@ mouse-hide-while-typing = true
 copy-on-select = false
 
 # Background and transparency settings
-background-opacity = 0.85
+background-opacity = 0.9
 background-blur = true
 
 # Font and cursor settings
-font-size = 14
-bold-is-bright = false
+font-family = "FiraCode Nerd Font Mono"
+font-style = "Retina"
+font-size = 16
+font-feature = -calt, -liga, -dlig
+
+bold-is-bright = true
 
 cursor-style = block
 cursor-opacity = 1.0

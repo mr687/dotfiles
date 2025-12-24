@@ -1,6 +1,7 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
+		enabled = false,
 		cmd = "Copilot",
 		build = ":Copilot auth",
 		event = "BufReadPost",
@@ -30,5 +31,6 @@ return {
 	},
 	{
 		"giuxtaposition/blink-cmp-copilot",
+		enabled = false,
 	},
 }

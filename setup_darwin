@@ -50,6 +50,7 @@ check_installed zsh-syntax-highlighting
 # Nerd Fonts
 fonts_list=(
   font-meslo-lg-nerd-font
+  font-fira-code-nerd-font
 )
 brew tap homebrew/cask-fonts
 for font in "${fonts_list[@]}"; do

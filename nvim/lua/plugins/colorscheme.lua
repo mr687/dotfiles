@@ -32,17 +32,7 @@ return {
 				colors.comment = colors.fg_dark
 				colors.border = colors.fg_dark
 
-				-- colors.bg = bg
-				-- colors.bg_highlight = bg_highlight
-				-- colors.bg_popup = bg_dark
-				-- colors.bg_search = bg_search
-				-- colors.bg_visual = bg_visual
-
-				-- colors.fg = fg
-				-- colors.fg_dark = fg_dark
-				-- colors.fg_float = fg
-				-- colors.fg_gutter = fg_gutter
-				-- colors.fg_sidebar = fg_dark
+				colors.bg_highlight = colors.none
 			end
 		end,
 

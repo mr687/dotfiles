@@ -70,13 +70,16 @@ _evalcache starship init zsh
 
 # FLUTTER SDK
 # flutter_version=3_24_3
-flutter_version=3_7_12
+# flutter_version=3_7_12
+flutter_version=3_35_7
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin/cache/dart-sdk:$PATH"
 # export PATH="$PATH:$HOME/.pub-cache/bin"
 alias fr="flutter run"
 alias fb="flutter pub run build_runner build --delete-conflicting-outputs"
+
+
 
 # ANDROID SDK
 # export ANDROID_HOME="$HOME/.dev/.android"

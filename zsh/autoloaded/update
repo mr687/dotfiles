@@ -1,3 +1,3 @@
 local brew="echo ; echo 'UPDATING HOMEBREW'; echo ; brew update; brew upgrade; brew cleanup;"
-local mas="echo ; echo 'UPDATING APP STORE'; echo ; mas upgrade;"
-sh -c $brew$mas
+# local mas="echo ; echo 'UPDATING APP STORE'; echo ; mas upgrade;"
+sh -c $brew

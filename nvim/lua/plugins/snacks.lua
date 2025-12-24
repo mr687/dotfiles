@@ -12,6 +12,10 @@ return {
 		},
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
+		---@class snacks.picker.explorer.Config: snacks.picker.files.Config|{}
+		explorer = {
+			replace_netrw = true,
+		},
 		picker = {
 			enabled = true,
 			hidden = true, -- for hidden files

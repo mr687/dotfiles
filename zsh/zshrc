@@ -52,3 +52,5 @@ export PATH="/Users/macbench/.rd/bin:$PATH"
 export PATH="$PATH:/Users/macbench/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+setopt CORRECT

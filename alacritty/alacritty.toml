@@ -30,7 +30,7 @@ history = 10000
 
 [font]
 size = 14
-normal.family = "MesloLGS Nerd Font Mono"
+normal.family = "FiraCode Nerd Font Mono"
 normal.style = "Regular"
 
 [cursor]

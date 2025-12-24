@@ -1,6 +1,6 @@
 return {
 	{ "akinsho/bufferline.nvim", enabled = false },
-	{ "nvim-lualine/lualine.nvim", enabled = false },
+	{ "nvim-lualine/lualine.nvim", enabled = true },
 	{ "nvim-mini/mini.icons", enabled = true },
 	{ "folke/noice.nvim", enabled = false },
 	{ "rcarriga/nvim-notify", enabled = false },
