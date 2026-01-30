@@ -104,15 +104,15 @@ export LDFLAGS="-L/opt/homebrew/opt/php@8.2/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.2/include"
 
 # GOLANG
-export GO_VERSION="1.24.4"
-export GOROOT="$HOME/.dev/.go/go$GO_VERSION"
-export GOPATH="$HOME/.dev/.go/.lib$GO_VERSION"
-export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-alias goworkspaces="cd $GOPATH"
+# export GO_VERSION="1.24.4"
+# export GOROOT="$HOME/.dev/.go/go$GO_VERSION"
+# export GOPATH="$HOME/.dev/.go/.lib$GO_VERSION"
+# export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+# alias goworkspaces="cd $GOPATH"
 
 # GOLANG BREW
 # export GOPATH="$HOME/go"
-# export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # PYTHON
 export PATH="~/.pyenv/versions/3.6.15/bin:${PATH}"
@@ -130,6 +130,7 @@ export PATH="/opt/metasploit-framework/bin:$PATH"
 
 # PODMAN CLI
 export PATH="/opt/podman/bin:$PATH"
+alias docker=podman
 
 # export PATH="$HOME/.jenv/bin:$PATH"
 # _evalcache jenv init -
