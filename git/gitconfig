@@ -14,7 +14,7 @@
   whitespace = error
   preloadindex = true
 	ignorecase = false
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/macbench/.gitignore_global
 	editor = nvim
   pager = delta
 
@@ -92,5 +92,9 @@
 
 [url "git@github.com:mr687/"]
   insteadOf = "my:"
+
 [url "git@github.com:"]
   insteadOf = "gh:"
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
