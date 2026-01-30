@@ -36,3 +36,21 @@ autocmd("FileType", {
 		keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", { desc = "Goto Declaration2" })
 	end,
 })
+
+-- Handle `opencode` events
+-- autocmd("User", {
+-- 	pattern = "OpencodeEvent:*", -- Optionally filter event types
+-- 	callback = function(args)
+-- 		---@type opencode.cli.client.Event
+-- 		local event = args.data.event
+-- 		---@type number
+-- 		local port = args.data.port
+--
+-- 		-- See the available event types and their properties
+-- 		vim.notify(vim.inspect(event))
+-- 		-- Do something useful
+-- 		if event.type == "session.idle" then
+-- 			vim.notify("`opencode` finished responding")
+-- 		end
+-- 	end,
+-- })
