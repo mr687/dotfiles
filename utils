@@ -7,6 +7,25 @@ log() {
 relink() {
 	src="$1"
 	dst="$2"
+
+	# Validate inputs to prevent dangerous deletions
+	if [[ -z "$src" ]] || [[ -z "$dst" ]]; then
+		echo "Error: Source and destination paths are required"
+		return 1
+	fi
+
+	# Prevent deletion of critical system paths
+	if [[ "$dst" == "/" ]] || [[ "$dst" == "$HOME" ]] || [[ "$dst" == "/Users" ]] || [[ "$dst" == "/System" ]]; then
+		echo "Error: Cannot relink to critical system path: $dst"
+		return 1
+	fi
+
+	# Validate source exists
+	if [[ ! -e "$src" ]]; then
+		echo "Error: Source path does not exist: $src"
+		return 1
+	fi
+
 	log "Linking $src to $dst"
 
 	rm -rf "$dst"

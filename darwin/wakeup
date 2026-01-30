@@ -9,8 +9,30 @@ if [[ "$wifistatus" != "1" ]]; then
 fi
 
 if [[ "$bluestatus" != "1" ]]; then
-  osascript -e 'tell app "Terminal" to do script "$(which blueutil) --power 1"'
+  # Use absolute path instead of command substitution to prevent injection
+  blueutil_path="/opt/homebrew/bin/blueutil"
+
+  # Verify blueutil exists before proceeding
+  if [[ ! -x "$blueutil_path" ]]; then
+    # Fallback to searching in PATH
+    blueutil_path=$(command -v blueutil)
+    if [[ -z "$blueutil_path" ]]; then
+      echo "Warning: blueutil not found, skipping bluetooth enable"
+      echo 1 >~/.bluestatus
+      return
+    fi
+  fi
+
+  osascript -e "tell app \"Terminal\" to do script \"$blueutil_path --power 1\""
   sleep 3
-  kill $(ps -A | grep -w Terminal.app | grep -v grep | awk '{print $1}')
+
+  # Only kill Terminal processes we spawned, not all Terminal instances
+  # Get PIDs of Terminal processes created in the last 5 seconds
+  terminal_pids=$(ps -A -o pid,etime,comm | grep Terminal.app | grep -v grep | awk '$2 ~ /^00:0[0-5]/ {print $1}')
+
+  if [[ -n "$terminal_pids" ]]; then
+    echo "$terminal_pids" | xargs kill 2>/dev/null
+  fi
+
   echo 1 >~/.bluestatus
 fi
