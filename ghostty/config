@@ -37,6 +37,7 @@ macos-window-shadow = true
 macos-auto-secure-input = true
 macos-secure-input-indication = true
 macos-icon = "retro"
+macos-option-as-alt = "left"
 
 # Mouse settings
 mouse-hide-while-typing = true
