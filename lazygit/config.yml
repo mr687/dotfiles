@@ -12,7 +12,13 @@ customCommands:
     loadingText: "Generating commit..."
     output: terminal
 
+git:
+  pagers:
+    - pager: delta --paging=never --line-numbers
+      colorArg: never
+
 gui:
+  sidePanelWidth: 0.2
   nerdFontsVersion: "3"
   theme:
     activeBorderColor:

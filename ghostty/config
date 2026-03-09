@@ -3,6 +3,10 @@
 
 term = xterm-256color
 
+# custom-shader = ~/.config/ghostty/shaders/glitchy.glsl
+# custom-shader = ~/.config/ghostty/shaders/tft.glsl
+# custom-shader = ~/.config/ghostty/shaders/bettercrt.glsl
+
 # shell
 shell-integration = "zsh"
 shell-integration-features = true
@@ -11,6 +15,7 @@ shell-integration-features = true
 auto-update = "check"
 auto-update-channel = "stable"
 
+# theme = ayu
 theme = tokyonight
 
 # Window settings
