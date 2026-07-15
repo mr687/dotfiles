@@ -7,7 +7,7 @@ customCommands:
     output: terminal
   - key: "<c-l>"
     description: "Pick AI commit"
-    command: 'lazycopilot commit gen -n -S wise > .git/COMMIT_EDITMSG && nvim .git/COMMIT_EDITMSG && [ -s .git/COMMIT_EDITMSG ] && git commit -F .git/COMMIT_EDITMSG || echo "Commit message is empty, commit aborted."'
+    command: 'lazycopilot commit gen -n > .git/COMMIT_EDITMSG && nvim .git/COMMIT_EDITMSG && [ -s .git/COMMIT_EDITMSG ] && git commit -F .git/COMMIT_EDITMSG || echo "Commit message is empty, commit aborted."'
     context: "files"
     loadingText: "Generating commit..."
     output: terminal
