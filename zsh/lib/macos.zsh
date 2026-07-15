@@ -35,8 +35,6 @@ alias man="tldr"
 alias ai="gh copilot"
 alias commit="opencode -p \"commit the changes, commit message must explain why, follow conventional commit rules. without copyright by opencode\""
 
-alias cd="z"
-
 alias c="code ."
 alias vim="nvim"
 alias vi="nvim"
@@ -70,26 +68,22 @@ _evalcache starship init zsh
 
 # FLUTTER SDK
 # flutter_version=3_24_3
-# flutter_version=3_7_12
-flutter_version=3_35_7
+flutter_version=3_7_12
+# flutter_version=3_35_7
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin:$PATH"
 export PATH="$HOME/.dev/.flutter/$flutter_version/bin/cache/dart-sdk:$PATH"
-# export PATH="$PATH:$HOME/.pub-cache/bin"
-alias fr="flutter run"
-alias fb="flutter pub run build_runner build --delete-conflicting-outputs"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+# alias fr="flutter run"
+# alias fb="flutter pub run build_runner build --delete-conflicting-outputs"
 
 
 
 # ANDROID SDK
-# export ANDROID_HOME="$HOME/.dev/.android"
-# export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
-# export PATH="$ANDROID_HOME/platform-tools:$PATH"
-# export PATH="$ANDROID_HOME/emulator:$PATH"
-
 export ANDROID_HOME="$HOME/.dev/.android-studio/sdk"
 export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/build-tools/37.0.0:$PATH"
 export PATH="$ANDROID_HOME/emulator:$PATH"
 
 # RUBY
@@ -176,7 +170,7 @@ _evalcache thefuck --alias
 _evalcache thefuck --alias fk
 
 # Zoxide
-_evalcache zoxide init zsh
+_evalcache zoxide init --cmd cd zsh
 
 # Yazi
 function y() {
