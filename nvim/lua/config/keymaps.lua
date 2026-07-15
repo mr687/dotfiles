@@ -22,3 +22,14 @@ keymap.set("n", "dw", 'vb"_d')
 -- move a blocks of text up/down with K/J in visual mode
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
+
+-- Maps '<leader>cp' to strictly copy the RELATIVE path and line number
+vim.keymap.set("n", "<leader>cp", function()
+	-- The ':%.' modifier forces the path to be relative to the current directory
+	local path = vim.fn.expand("%:.")
+	local line = vim.fn.line(".")
+	local result = path .. ":" .. line
+
+	vim.fn.setreg("+", result)
+	print("Copied relative: " .. result)
+end, { desc = "Copy relative path and line number" })
