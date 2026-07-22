@@ -17,10 +17,10 @@ bar=(
   height=39
   corner_radius=19
   blur_radius=0
-  margin=10
-  y_offset=5
-  border_color=0x4fe1e3e4
-  border_width=1
+  margin=5
+  y_offset=4.7
+  border_color=0xff494d64
+  border_width=3
   color=0x70000000
 )
 

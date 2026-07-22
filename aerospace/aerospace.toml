@@ -9,7 +9,7 @@ config-version = 2
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=8.0 blacklist="Blank,iPhone Mirroring"',
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=6.0 blacklist="Blank,iPhone Mirroring"',
   'exec-and-forget sketchybar',
 ]
 
@@ -47,14 +47,17 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
 
 on-window-detected = [
-  { if = 'test %{app-bundle-id} = com.brave.Browser', check-further-callbacks = true, run = [
+  { if = 'test %{app-bundle-id} = com.brave.Browser', run = [
     'move-node-to-workspace B',
   ] },
-  { if = 'test %{app-bundle-id} = com.tinyapp.TablePlus-setapp', check-further-callbacks = true, run = [
+  { if = 'test %{app-bundle-id} = app.zen-browser.zen', run = [
+    'move-node-to-workspace B',
+  ] },
+  { if = 'test %{app-bundle-id} = com.tinyapp.TablePlus-setapp', run = [
     'move-node-to-workspace D',
     'layout accordion horizontal vertical',
   ] },
-  { if = 'test %{app-bundle-id} = com.TablePro', check-further-callbacks = true, run = [
+  { if = 'test %{app-bundle-id} = com.TablePro', run = [
     'move-node-to-workspace D',
     'layout accordion horizontal vertical',
   ] },
@@ -124,10 +127,10 @@ key-mapping.preset = 'qwerty'
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 gaps.inner.horizontal = 12
 gaps.inner.vertical = 12
-gaps.outer.left = 12
-gaps.outer.bottom = 12
-gaps.outer.top = [{ monitor."MSI" = 54 }, 12]
-gaps.outer.right = 12
+gaps.outer.left = 24
+gaps.outer.bottom = 24
+gaps.outer.top = [{ monitor."MSI" = 52 }, 24]
+gaps.outer.right = 24
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -155,12 +158,11 @@ gaps.outer.right = 12
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut
 # (like in i3)
-# alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
+alt-enter = '''exec-and-forget osascript -e '
+tell application "Ghostty"
+    new window
+end tell'
+'''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'

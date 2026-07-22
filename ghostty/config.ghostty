@@ -53,13 +53,13 @@ copy-on-select = false
 # background-image-fit = cover
 # background-image-position = center
 # background-image-opacity = 0.08
-background-opacity = 0.9
-background-blur = true
+background-opacity = 0.8
+background-blur = false
 
 # Font and cursor settings
 font-family = "FiraCode Nerd Font Mono"
 font-style = "Retina"
-font-size = 16
+font-size = 14
 font-feature = -liga,calt,-dlig
 # ligature tests: => , ===, !==, <=, >=, ->, <-, =>, <=>, &&, ||, ++, --, **
 
