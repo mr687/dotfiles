@@ -59,3 +59,9 @@ if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)
 
 # bun completions
 [ -s "/Users/macbench/.bun/_bun" ] && source "/Users/macbench/.bun/_bun"
+
+# Added by codebase-memory-mcp install
+export PATH="/Users/macbench/.local/bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/mc mc
