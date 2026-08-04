@@ -100,11 +100,11 @@ persistent-workspaces = [
 
 workspace-to-monitor-force-assignment.9 = "MSI"
 workspace-to-monitor-force-assignment.10 = "MSI"
-workspace-to-monitor-force-assignment."B" = "main"
-workspace-to-monitor-force-assignment."D" = "main"
-workspace-to-monitor-force-assignment."P" = "main"
-workspace-to-monitor-force-assignment."T" = "main"
-workspace-to-monitor-force-assignment."W" = "main"
+workspace-to-monitor-force-assignment."B" = ["MSI", "built-in"]
+workspace-to-monitor-force-assignment."D" = "built-in"
+workspace-to-monitor-force-assignment."P" = "built-in"
+# workspace-to-monitor-force-assignment."T" = ["MSI", "built-in"]
+workspace-to-monitor-force-assignment."W" = "built-in"
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -127,10 +127,10 @@ key-mapping.preset = 'qwerty'
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 gaps.inner.horizontal = 12
 gaps.inner.vertical = 12
-gaps.outer.left = 24
-gaps.outer.bottom = 24
-gaps.outer.top = [{ monitor."MSI" = 52 }, 24]
-gaps.outer.right = 24
+gaps.outer.left = 44
+gaps.outer.bottom = 44
+gaps.outer.top = [{ monitor."MSI" = 72 }, 44]
+gaps.outer.right = 44
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
