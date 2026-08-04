@@ -4,6 +4,8 @@
 config-file = themes/tokyonight
 term = xterm-256color
 
+command = "/Users/macbench/.config/ghostty/scripts/startup.sh"
+
 # custom-shader = shaders/glitchy.glsl
 # custom-shader = shaders/tft.glsl
 # custom-shader = shaders/bettercrt.glsl
