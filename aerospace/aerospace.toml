@@ -61,6 +61,10 @@ on-window-detected = [
     'move-node-to-workspace D',
     'layout accordion horizontal vertical',
   ] },
+  { if = 'test %{app-bundle-id} = com.mongodb.compass', run = [
+    'move-node-to-workspace D',
+    'layout accordion horizontal vertical',
+  ] },
   { if = 'test %{app-bundle-id} = com.postmanlabs.mac', run = [
     'move-node-to-workspace P',
   ] },
@@ -88,23 +92,11 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config option is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = [
-  "9",  # Second Monitor
-  "10", # Second Monitor
-  "B",  # Browser
-  "D",  # Database Client
-  "P",  # Postman
-  "T",  # Terminal
-  "W",  # Whatsapp
-]
+persistent-workspaces = []
 
+workspace-to-monitor-force-assignment.8 = "MSI"
 workspace-to-monitor-force-assignment.9 = "MSI"
 workspace-to-monitor-force-assignment.10 = "MSI"
-workspace-to-monitor-force-assignment."B" = ["MSI", "built-in"]
-workspace-to-monitor-force-assignment."D" = "built-in"
-workspace-to-monitor-force-assignment."P" = "built-in"
-# workspace-to-monitor-force-assignment."T" = ["MSI", "built-in"]
-workspace-to-monitor-force-assignment."W" = "built-in"
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -185,6 +177,14 @@ alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
 alt-b = 'workspace B'
@@ -194,6 +194,14 @@ alt-t = 'workspace T'
 alt-w = 'workspace W'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
 alt-shift-b = 'move-node-to-workspace B'
