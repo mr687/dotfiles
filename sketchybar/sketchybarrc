@@ -1,16 +1,16 @@
-# This is a demo config to showcase some of the most important commands.
-# It is meant to be changed and configured, as it is intentionally kept sparse.
-# For a (much) more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
+#!/usr/bin/env bash
 
-PLUGIN_DIR="$CONFIG_DIR/plugins"
+export ITEMS_DIR="$CONFIG_DIR/items"
+export PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+items() {
+  while test -n "$1"; do
+    if test -f "$ITEMS_DIR/$1.sh"; then
+      source "$ITEMS_DIR/$1.sh"
+    fi
+    shift
+  done
+}
 
 bar=(
   position=top
@@ -23,13 +23,7 @@ bar=(
   border_width=3
   color=0x70000000
 )
-
 sketchybar --bar "${bar[@]}"
-
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
   padding_left=5
@@ -45,53 +39,9 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-sketchybar --add event aerospace_workspace_change
-sketchybar --add event aerospace_mode_change
+items aerospace
+items front_app
+items right_items
 
-sketchybar --add item aerospace.mode left \
-  --subscribe aerospace.mode aerospace_mode_change \
-  --set aerospace.mode label="(S)" drawing=off script="$CONFIG_DIR/plugins/aerospace_mode.sh"
-
-for sid in $(aerospace list-workspaces --all); do
-  space=(
-    label="$sid"
-    label.padding_left=5
-    label.padding_right=5
-    background.color=0x40ffffff
-    background.corner_radius=5
-    background.height=18
-    background.drawing=off
-    background.padding_left=2
-    background.padding_right=2
-    icon.drawing=off
-    script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-  )
-  sketchybar --add item space.$sid left \
-    --subscribe space.$sid aerospace_workspace_change \
-    --set space.$sid \
-    "${space[@]}"
-done
-
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
-
-sketchybar --add item front_app left \
-    --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-    --subscribe front_app front_app_switched
-
-##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-sketchybar --add item clock right \
-           --set clock update_freq=30 icon.drawing=off script="$PLUGIN_DIR/clock.sh" \
-           --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
-
-##### Force all scripts to run the first time (never do this in a script) #####
+# sketchybar --hotload true
 sketchybar --update
-
-sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
