@@ -1,47 +1,18 @@
-#!/usr/bin/env bash
+#!/usr/bin/env lua
 
-export ITEMS_DIR="$CONFIG_DIR/items"
-export PLUGIN_DIR="$CONFIG_DIR/plugins"
+-- Add sketchybar module to package path
+package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
 
-items() {
-  while test -n "$1"; do
-    if test -f "$ITEMS_DIR/$1.sh"; then
-      source "$ITEMS_DIR/$1.sh"
-    fi
-    shift
-  done
-}
+-- Initialize sbar module
+sbar = require("sketchybar")
 
-bar=(
-  position=top
-  height=39
-  corner_radius=19
-  blur_radius=0
-  margin=5
-  y_offset=4.7
-  border_color=0xff494d64
-  border_width=3
-  color=0x70000000
-)
-sketchybar --bar "${bar[@]}"
+-- Load configuration
+sbar.begin_config()
+require("init")
+sbar.hotload(true)
+sbar.end_config()
 
-default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
-)
-sketchybar --default "${default[@]}"
+sbar.event_loop()
 
-items aerospace
-items front_app
-items right_items
-
-# sketchybar --hotload true
-sketchybar --update
+-- Trigger update to run all scripts
+sbar.update()
