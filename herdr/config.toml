@@ -49,7 +49,7 @@ switch_workspace = "prefix+shift+1..9"
 # cycle_pane_next = "prefix+tab"
 # cycle_pane_previous = "prefix+shift+tab"
 # last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
-split_vertical = "prefix+|"
+split_vertical = "prefix+\\"
 split_horizontal = "prefix+minus"
 # close_pane = "prefix+x"
 zoom = "prefix+m" # legacy alias: fullscreen
@@ -110,3 +110,9 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "vim-herdr-navigation.right"
 description = "navigate right (vim/herdr)"
+
+[[keys.command]]
+key = "prefix+i"
+type = "plugin_action"
+command = "flock.farm.open"
+description = "Open Flock Farm"
