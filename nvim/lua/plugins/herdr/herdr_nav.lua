@@ -11,11 +11,26 @@
 -- or source it from your config after plugins load:
 --   dofile("/path/to/vim-herdr-navigation/editor/nvim.lua")
 
+local function is_snacks_explorer()
+	if Snacks then
+		local is_explorer = vim.iter(Snacks.picker.get({ source = "explorer" }))
+			:any(function(picker) ---@param picker snacks.Picker
+				return picker:is_focused()
+			end)
+		return is_explorer
+	end
+	return false
+end
+
 local function nav(wincmd, dir)
 	local prev = vim.api.nvim_get_current_win()
+	local is_explorer = is_snacks_explorer()
 	vim.cmd("wincmd " .. wincmd)
+
 	if vim.api.nvim_get_current_win() ~= prev then
-		return -- moved within Neovim
+		if not is_explorer then
+			return -- moved within Neovim
+		end
 	end
 	-- At a split edge: cross into the surrounding multiplexer.
 	if vim.env.HERDR_PANE_ID and vim.env.HERDR_PANE_ID ~= "" then

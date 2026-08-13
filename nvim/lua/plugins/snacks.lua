@@ -20,6 +20,16 @@ return {
 			enabled = true,
 			hidden = true, -- for hidden files
 			ignored = false, -- for .gitignore files
+			win = {
+				list = {
+					keys = {
+						["<C-h>"] = false,
+						["<C-j>"] = false,
+						["<C-k>"] = false,
+						["<C-l>"] = false,
+					},
+				},
+			},
 			-- sources = {
 			-- 	select = {
 			-- 		layout = {
