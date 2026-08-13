@@ -35,7 +35,7 @@ battery:subscribe({ "routine", "system_woke", "power_source_change" }, function(
 
 		battery:set({
 			icon = { string = icon },
-			label = { string = percentage .. "%" },
+			label = { string = percentage .. "%", padding_right = 0 },
 		})
 	end)
 end)

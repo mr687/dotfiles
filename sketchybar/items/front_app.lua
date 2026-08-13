@@ -1,5 +1,9 @@
 local front_app = sbar.add("item", "front_app", {
+	padding_left = 0,
 	icon = {
+		drawing = "off",
+	},
+	backgroung = {
 		drawing = "off",
 	},
 })
