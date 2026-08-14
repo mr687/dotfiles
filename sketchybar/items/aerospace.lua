@@ -1,26 +1,19 @@
 local colors = require("colors")
 local icons_map = require("icons")
 
--- Helper function to execute shell commands and get output
-local function exec(command)
-	local handle = io.popen(command)
-	local result = handle:read("*a")
-	handle:close()
-	return result:gsub("%s+$", "")
+local function trim(s)
+	return s and s:match("^%s*(.-)%s*$") or ""
 end
 
--- Helper function to get lines from command output
-local function exec_lines(command)
-	local lines = {}
-	for line in exec(command):gmatch("[^\r\n]+") do
-		table.insert(lines, line)
-	end
-	return lines
+local all_workspaces = {}
+for i = 1, 10 do
+	table.insert(all_workspaces, tostring(i))
+end
+for ascii = string.byte("A"), string.byte("Z") do
+	table.insert(all_workspaces, string.char(ascii))
 end
 
-function trim(s)
-	return s:match("^%s*(.-)%s*$")
-end
+local workspace_states = {}
 
 sbar.add("event", "aerospace_workspace_change")
 sbar.add("event", "aerospace_monitor_change")
@@ -34,23 +27,9 @@ sbar.add("item", "aerospace.mode", {
 	drawing = "off",
 })
 
-local workspace_states = {}
-local all_workspaces = exec_lines(
-	"aerospace list-workspaces --all --format '%{workspace}|%{monitor-is-main}|%{monitor-appkit-nsscreen-screens-id}'"
-)
-
-for _, space in ipairs(all_workspaces) do
-	local space_id, monitor_is_main, monitor_id = space:match("([^|]+)|([^|]+)|([^|]+)")
-
-	local label_y_offset = 0
-	if monitor_is_main ~= "true" then
-		label_y_offset = -1
-	end
-
-	-- Create space item
+for _, space_id in ipairs(all_workspaces) do
 	sbar.add("item", "aerospace." .. space_id, {
 		position = "left",
-		display = monitor_id,
 		drawing = "off",
 		icon = {
 			string = space_id,
@@ -62,7 +41,7 @@ for _, space in ipairs(all_workspaces) do
 			font = "sketchybar-app-font:Regular:12.0",
 			padding_left = 0,
 			padding_right = 6,
-			y_offset = label_y_offset,
+			y_offset = 0,
 			shadow = { drawing = "off" },
 		},
 		background = {
@@ -79,124 +58,114 @@ for _, space in ipairs(all_workspaces) do
 	})
 
 	workspace_states[space_id] = {
+		display = 1,
 		drawing = "off",
 		active = false,
+		label = "",
 	}
 end
 
-local function get_current_state(env)
-	local state = {}
-	local focused_workspace = env.FOCUSED_WORKSPACE or exec("aerospace list-workspaces --focused")
+local function parse_and_render(focused_ws, windows_output)
+	local ws_has_windows = {}
+	local ws_icons = {}
+	local ws_monitors = {}
 
-	local monitors = exec_lines("aerospace list-monitors")
-	for i, _ in ipairs(monitors) do
-		local non_empty_workspaces = exec_lines("aerospace list-workspaces --monitor " .. i .. " --empty no")
-		for _, space_id in ipairs(non_empty_workspaces) do
-			local app_names = exec_lines("aerospace list-windows --workspace " .. space_id .. " --format '%{app-name}'")
-
-			local app_icons = " "
-			for _, app_name in ipairs(app_names) do
-				if app_name then
-					app_icons = app_icons .. " " .. icons_map(app_name)
+	for line in windows_output:gmatch("[^\r\n]+") do
+		local ws, app, monitor_id = line:match("^([^|]+)|(.*)|(.*)$")
+		if ws and monitor_id then
+			ws_monitors[ws] = monitor_id
+		end
+		if ws and app then
+			ws_has_windows[ws] = true
+			local icon = icons_map(app)
+			if icon and icon ~= "" then
+				if not ws_icons[ws] then
+					ws_icons[ws] = {}
 				end
+				table.insert(ws_icons[ws], icon)
 			end
-
-			state[space_id] = {
-				drawing = "on",
-				label_string = app_icons,
-				active = (space_id == focused_workspace),
-			}
 		end
 	end
 
-	if state[focused_workspace] == nil then
-		state[focused_workspace] = {
-			drawing = "on",
-			active = true,
-		}
-	end
+	sbar.begin_config()
+	for _, space_id in ipairs(all_workspaces) do
+		local is_focused = (space_id == focused_ws)
+		local is_non_empty = (ws_has_windows[space_id] == true)
+		local is_visible = is_focused or is_non_empty
 
-	return state
-end
+		local monitor_id = ws_monitors[space_id] or 1
+		local icons_list = ws_icons[space_id]
+		local label_str = icons_list and table.concat(icons_list, " ") or ""
+		local drawing_str = is_visible and "on" or "off"
 
--- Helper function to check if two states are equal
-local function states_equal(old, new)
-	if (old == nil) ~= (new == nil) then
-		return false
-	end
-	if old == nil then
-		return true
-	end
+		local old = workspace_states[space_id]
 
-	return old.drawing == new.drawing and old.active == new.active
+		if
+			old.drawing ~= drawing_str
+			or old.active ~= is_focused
+			or old.label ~= label_str
+			or old.display ~= monitor_id
+		then
+			sbar.set("aerospace." .. space_id, {
+				display = monitor_id,
+				drawing = drawing_str,
+				label = {
+					drawing = (label_str ~= "") and "on" or "off",
+					string = label_str,
+				},
+				background = {
+					color = is_focused and colors.BACKGROUND_SPACE_ACTIVE or colors.TRANSPARENT,
+				},
+			})
+
+			old.display = monitor_id
+			old.drawing = drawing_str
+			old.active = is_focused
+			old.label = label_str
+		end
+	end
+	sbar.end_config()
 end
 
 local function update_all_workspaces(env)
-	sbar.begin_config()
+	local focused_ws = env and env.FOCUSED_WORKSPACE
 
-	local new_states = get_current_state(env)
-
-	for _, space in ipairs(all_workspaces) do
-		local space_id = space:match("([^|]+)|([^|]+)")
-		local new_state = new_states[space_id] or {}
-		local old_state = workspace_states[space_id] or {}
-
-		if new_state == nil then
-			if old_state.drawing == "on" then
-				sbar.set("aerospace." .. space_id, {
-					drawing = "off",
-					label = { string = "" },
-					background = {
-						color = colors.TRANSPARENT,
-					},
-				})
-				workspace_states[space_id].drawing = "off"
-				workspace_states[space_id].active = false
+	if focused_ws and focused_ws ~= "" then
+		sbar.exec("aerospace list-windows --all --format '%{workspace}|%{app-name}|%{monitor-id}'", function(output)
+			parse_and_render(focused_ws, output)
+		end)
+	else
+		sbar.exec(
+			"aerospace list-workspaces --focused; echo '---'; aerospace list-windows --all --format '%{workspace}|%{app-name}|%{monitor-id}'",
+			function(output)
+				local focused_part, windows_part = output:match("^(.-)\r?\n%-%-%-\r?\n(.*)$")
+				if focused_part then
+					focused_ws = trim(focused_part)
+					parse_and_render(focused_ws, windows_part or "")
+				end
 			end
-		else
-			if not states_equal(old_state, new_state) then
-				sbar.set("aerospace." .. space_id, {
-					drawing = new_state.drawing or "off",
-					label = { string = trim(new_state.label_string or "") },
-					background = {
-						color = new_state.active and colors.BACKGROUND_SPACE_ACTIVE or colors.TRANSPARENT,
-					},
-				})
-				workspace_states[space_id] = new_state
-			end
-		end
+		)
 	end
-
-	sbar.end_config()
 end
 
 update_all_workspaces({})
 
--- Create space separator that handles events
 local poop = sbar.add("item", "poop", {
 	position = "center",
 	icon = { string = "💩", padding_left = 0, padding_right = 0, margin_right = 0 },
 	label = { drawing = "off", padding_left = 0, margin_left = 0 },
 	background = { drawing = "off" },
+	click_script = "sketchybar --reload",
 })
 
-poop:subscribe("aerospace_workspace_change", function(env)
-	update_all_workspaces(env)
-end)
+poop:subscribe("aerospace_workspace_change", update_all_workspaces)
 
 poop:subscribe("aerospace_mode_change", function(env)
-	local mode = env.MODE
-	if mode == "service" then
-		sbar.set("aerospace.mode", {
-			label = { string = "(S)" },
-			drawing = "on",
-		})
-	else
-		sbar.set("aerospace.mode", {
-			label = { string = "" },
-			drawing = "off",
-		})
-	end
+	local is_service = env.MODE == "service"
+	sbar.set("aerospace.mode", {
+		label = { string = is_service and "(S)" or "" },
+		drawing = is_service and "on" or "off",
+	})
 end)
 
 poop:subscribe("aerospace_monitor_change", function(env)

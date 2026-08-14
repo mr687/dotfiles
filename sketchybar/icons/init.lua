@@ -1,4 +1,4 @@
-local icon_map = require("icons/icon_map")
+local icon_map = require("helpers/icon_map")
 
 return function(app_name)
 	if icon_map[app_name] then
