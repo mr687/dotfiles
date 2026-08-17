@@ -1,5 +1,10 @@
 local front_app = sbar.add("item", "front_app", {
 	padding_left = 0,
+	label = {
+		shadow = {
+			drawing = "off",
+		},
+	},
 	icon = {
 		drawing = "off",
 	},
@@ -8,14 +13,11 @@ local front_app = sbar.add("item", "front_app", {
 	},
 })
 
-front_app:subscribe({ "front_app", "front_app_switched" }, function(env)
-	local sender = env.SENDER
+front_app:subscribe({ "front_app_switched" }, function(env)
 	local app_name = env.INFO
-	if sender == "front_app_switched" then
-		front_app:set({
-			label = {
-				string = app_name,
-			},
-		})
-	end
+	front_app:set({
+		label = {
+			string = app_name,
+		},
+	})
 end)
