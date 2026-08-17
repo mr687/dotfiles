@@ -1,9 +1,15 @@
+local colors = require("colors")
 local get_icon = require("icons.battery")
 
 local num_hearts = 3
 local num_per_heart = 4
 local total_heart_states = num_hearts * num_per_heart
 local item_ids = {}
+local items = {}
+local charge_state = {
+	percentage = "N/A",
+	time_remaining = "No estimate",
+}
 
 for i = num_hearts, 1, -1 do
 	local item_id = "battery." .. i
@@ -24,7 +30,7 @@ for i = num_hearts, 1, -1 do
 		item_prop.background.padding_left = 10
 	end
 
-	sbar.add("item", item_id, item_prop)
+	items[i] = sbar.add("item", item_id, item_prop)
 	table.insert(item_ids, item_id)
 end
 
@@ -47,7 +53,10 @@ local function update_all_batteries()
 			return
 		end
 
+		charge_state.percentage = percentage
 		local percent_num = tonumber(percentage)
+		local _, _, remaining = batt_info:find(" (%d+:%d+) remaining")
+		charge_state.time_remaining = remaining and (remaining .. "h") or "No estimate"
 		local charging = batt_info:match("AC Power") and true or false
 
 		local states = calculate_heart_states(percent_num)
@@ -70,6 +79,44 @@ local bracket = sbar.add("bracket", "bracket.battery", item_ids, {
 		drawing = "on",
 		height = 0,
 	},
+	popup = {
+		drawing = "off",
+		align = "center",
+		background = {
+			drawing = "on",
+			color = colors.BACKGROUND_SPACE_ACTIVE,
+			corner_radius = 10,
+			border_width = 3,
+			border_color = colors.BORDER_COLOR,
+		},
+	},
 })
 
+local bracket_popup = sbar.add("item", {
+	position = "popup." .. bracket.name,
+	icon = {
+		align = "left",
+	},
+	label = {
+		align = "right",
+		string = "00:00h",
+	},
+})
+
+local function toggle_bracket_popup()
+	local is_shown = bracket:query().popup.drawing == "on"
+	bracket:set({ popup = { drawing = not is_shown } })
+	if not is_shown then
+		bracket_popup:set({
+			icon = charge_state.percentage .. "% | ",
+			label = "Time remaining: " .. charge_state.time_remaining,
+		})
+	end
+end
+
 bracket:subscribe({ "routine", "power_source_change", "system_woke" }, update_all_batteries)
+bracket:subscribe({ "mouse.clicked" }, toggle_bracket_popup)
+
+for i = 1, #items do
+	items[i]:subscribe({ "mouse.clicked" }, toggle_bracket_popup)
+end
