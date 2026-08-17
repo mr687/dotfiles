@@ -158,7 +158,7 @@ local poop = sbar.add("item", "poop", {
 	click_script = "sketchybar --reload",
 })
 
-poop:subscribe("aerospace_workspace_change", update_all_workspaces)
+poop:subscribe({ "aerospace_workspace_change", "front_app_switched", "space_windows_change" }, update_all_workspaces)
 
 poop:subscribe("aerospace_mode_change", function(env)
 	local is_service = env.MODE == "service"
