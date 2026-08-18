@@ -1,11 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+blacklist="Blank,iPhone Mirroring"
 
 options=(
-	style=round
-	width=6.0
-	hidpi=off
-	active_color=0xffe2e2e3
-	inactive_color=0xff414550
+  style=round
+  width=6.0
+  hidpi=off
+  active_color=0xffccd0da
+  inactive_color=0xff494d64
+  blacklist="${blacklist}"
 )
 
 borders "${options[@]}"

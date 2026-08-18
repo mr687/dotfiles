@@ -20,11 +20,11 @@ sbar.add("event", "aerospace_monitor_change")
 sbar.add("event", "aerospace_mode_change")
 
 sbar.add("item", "aerospace.mode", {
+	drawing = "off",
 	position = "left",
 	label = { string = "" },
 	icon = { drawing = "off" },
 	background = { drawing = "off" },
-	drawing = "off",
 })
 
 for _, space_id in ipairs(all_workspaces) do
@@ -38,7 +38,7 @@ for _, space_id in ipairs(all_workspaces) do
 			shadow = { drawing = "off" },
 		},
 		label = {
-			font = "sketchybar-app-font:Regular:12.0",
+			font = "sketchybar-app-font:Regular:10.0",
 			padding_left = 0,
 			padding_right = 6,
 			y_offset = 0,
@@ -152,6 +152,7 @@ update_all_workspaces({})
 
 local poop = sbar.add("item", "poop", {
 	position = "center",
+	display = 1,
 	icon = { string = "💩", padding_left = 0, padding_right = 0, margin_right = 0 },
 	label = { drawing = "off", padding_left = 0, margin_left = 0 },
 	background = { drawing = "off" },
@@ -163,7 +164,7 @@ poop:subscribe({ "aerospace_workspace_change", "front_app_switched", "space_wind
 poop:subscribe("aerospace_mode_change", function(env)
 	local is_service = env.MODE == "service"
 	sbar.set("aerospace.mode", {
-		label = { string = is_service and "(S)" or "" },
+		label = { string = is_service and "[SERVICE]" or "" },
 		drawing = is_service and "on" or "off",
 	})
 end)

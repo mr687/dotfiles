@@ -21,13 +21,17 @@ for i = num_hearts, 1, -1 do
 			drawing = "on",
 			padding_left = 3,
 			padding_right = 3,
+			image = {
+				scale = 0.7,
+				shadow = { drawing = "off" },
+			},
 		},
 	}
 
 	if i == num_hearts then
-		item_prop.background.padding_right = 10
+		item_prop.background.image.padding_right = 6
 	elseif i == 1 then
-		item_prop.background.padding_left = 10
+		item_prop.background.image.padding_left = 6
 	end
 
 	items[i] = sbar.add("item", item_id, item_prop)
@@ -64,7 +68,7 @@ local function update_all_batteries()
 			local item_id = "battery." .. i
 			local icon = get_icon(states[i], charging)
 			sbar.set(item_id, {
-				background = { image = icon },
+				background = { image = { string = icon } },
 			})
 		end
 		sbar.end_config()
@@ -77,14 +81,16 @@ local bracket = sbar.add("bracket", "bracket.battery", item_ids, {
 	update_freq = 60,
 	background = {
 		drawing = "on",
-		height = 0,
+		color = colors.BACKGROUND_SPACE_ACTIVE,
+		corner_radius = 5,
+		height = 23,
 	},
 	popup = {
 		drawing = "off",
 		align = "center",
 		background = {
 			drawing = "on",
-			color = colors.BACKGROUND_SPACE_ACTIVE,
+			color = colors.BAR_COLOR,
 			corner_radius = 10,
 			border_width = 3,
 			border_color = colors.BORDER_COLOR,

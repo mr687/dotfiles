@@ -1,8 +1,7 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		lazy = true,
-		priority = 1,
+		priority = 1000,
 		---@param opts tokyonight.Config
 		opts = function(_, opts)
 			local transparent = true
