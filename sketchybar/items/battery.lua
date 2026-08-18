@@ -16,22 +16,18 @@ for i = num_hearts, 1, -1 do
 	local item_prop = {
 		position = "right",
 		icon = { drawing = "off" },
-		label = { drawing = "off" },
-		background = {
-			padding_left = 4,
-			padding_right = 4,
+		label = {
+			font = "battery-heart:regular:18.0",
 			drawing = "on",
-			image = {
-				scale = 0.7,
-				shadow = { drawing = "off" },
-			},
+			padding_left = 0,
+			padding_right = 0,
 		},
 	}
 
 	if i == num_hearts then
-		item_prop.background.image.padding_right = 6
+		item_prop.label.padding_right = 6
 	elseif i == 1 then
-		item_prop.background.image.padding_left = 6
+		item_prop.label.padding_left = 6
 	end
 
 	items[i] = sbar.add("item", item_id, item_prop)
@@ -68,7 +64,7 @@ local function update_all_batteries()
 			local item_id = "battery." .. i
 			local icon = get_icon(states[i], charging)
 			sbar.set(item_id, {
-				background = { image = { string = icon } },
+				label = { string = icon },
 			})
 		end
 		sbar.end_config()
