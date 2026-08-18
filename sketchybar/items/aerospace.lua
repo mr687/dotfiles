@@ -22,37 +22,36 @@ sbar.add("event", "aerospace_mode_change")
 sbar.add("item", "aerospace.mode", {
 	drawing = "off",
 	position = "left",
-	label = { string = "" },
+	padding_left = 0,
+	label = { string = "", padding_left = 0 },
 	icon = { drawing = "off" },
 	background = { drawing = "off" },
 })
 
-for _, space_id in ipairs(all_workspaces) do
+for i, space_id in ipairs(all_workspaces) do
 	sbar.add("item", "aerospace." .. space_id, {
 		position = "left",
 		drawing = "off",
+		padding_left = 0,
+		padding_right = 5,
 		icon = {
+			font = "Press Start 2P:Regular:10.0",
 			string = space_id,
-			padding_left = 5,
-			padding_right = 5,
 			shadow = { drawing = "off" },
 		},
 		label = {
-			font = "sketchybar-app-font:Regular:10.0",
 			padding_left = 0,
-			padding_right = 6,
+			font = "sketchybar-app-font:Regular:10.0",
 			y_offset = 0,
 			shadow = { drawing = "off" },
 		},
 		background = {
 			drawing = "on",
-			color = colors.BACKGROUND_SPACE_ACTIVE,
+			color = colors.SPACE_BG_INACTIVE,
 			corner_radius = 5,
-			height = 23,
+			height = 26,
 			border_color = colors.BORDER_COLOR,
-			border_width = 1,
-			padding_left = 0,
-			padding_right = 5,
+			border_width = 2,
 		},
 		click_script = "aerospace workspace " .. space_id,
 	})
@@ -114,7 +113,7 @@ local function parse_and_render(focused_ws, windows_output)
 					string = label_str,
 				},
 				background = {
-					color = is_focused and colors.BACKGROUND_SPACE_ACTIVE or colors.TRANSPARENT,
+					color = is_focused and colors.SPACE_BG_ACTIVE or colors.SPACE_BG_INACTIVE,
 				},
 			})
 

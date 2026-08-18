@@ -18,9 +18,9 @@ for i = num_hearts, 1, -1 do
 		icon = { drawing = "off" },
 		label = { drawing = "off" },
 		background = {
+			padding_left = 4,
+			padding_right = 4,
 			drawing = "on",
-			padding_left = 3,
-			padding_right = 3,
 			image = {
 				scale = 0.7,
 				shadow = { drawing = "off" },
@@ -81,9 +81,9 @@ local bracket = sbar.add("bracket", "bracket.battery", item_ids, {
 	update_freq = 60,
 	background = {
 		drawing = "on",
-		color = colors.BACKGROUND_SPACE_ACTIVE,
+		color = colors.BATTERY_BG_COLOR,
 		corner_radius = 5,
-		height = 23,
+		height = 26,
 	},
 	popup = {
 		drawing = "off",

@@ -1,6 +1,8 @@
+local colors = require("colors")
+
 local front_app = sbar.add("item", "front_app", {
-	padding_left = 0,
 	label = {
+		font = "Press Start 2P:Regular:10.0",
 		shadow = {
 			drawing = "off",
 		},
@@ -8,8 +10,11 @@ local front_app = sbar.add("item", "front_app", {
 	icon = {
 		drawing = "off",
 	},
-	backgroung = {
-		drawing = "off",
+	background = {
+		drawing = "on",
+		color = colors.CLOCK_BG_COLOR,
+		corner_radius = 5,
+		height = 26,
 	},
 })
 

@@ -6,14 +6,14 @@ sbar.default({
 	icon = {
 		font = "Hack Nerd Font:Bold:14.0",
 		color = colors.FOREGROUND,
-		padding_left = 4,
-		padding_right = 4,
+		padding_left = 10,
+		padding_right = 10,
 	},
 	label = {
+		padding_left = 10,
+		padding_right = 10,
 		font = "SF Pro:Semibold:14.0",
 		color = colors.FOREGROUND,
-		padding_left = 4,
-		padding_right = 4,
 	},
 	background = {
 		drawing = "off",
