@@ -47,21 +47,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
 
 on-window-detected = [
-  { if = 'test %{app-bundle-id} = com.brave.Browser', run = [
+  { if = 'test %{app-bundle-id} = com.brave.Browser || test %{app-bundle-id} = app.zen-browser.zen', run = [
     'move-node-to-workspace B',
   ] },
-  { if = 'test %{app-bundle-id} = app.zen-browser.zen', run = [
-    'move-node-to-workspace B',
-  ] },
-  { if = 'test %{app-bundle-id} = com.tinyapp.TablePlus-setapp', run = [
-    'move-node-to-workspace D',
-    'layout accordion horizontal vertical',
-  ] },
-  { if = 'test %{app-bundle-id} = com.TablePro', run = [
-    'move-node-to-workspace D',
-    'layout accordion horizontal vertical',
-  ] },
-  { if = 'test %{app-bundle-id} = com.mongodb.compass', run = [
+  { if = 'test %{app-bundle-id} = com.TablePro || test %{app-bundle-id} = com.mongodb.compass', run = [
     'move-node-to-workspace D',
     'layout accordion horizontal vertical',
   ] },
@@ -76,6 +65,11 @@ on-window-detected = [
   ] },
   { if = 'test %{app-bundle-id} = com.figma.Desktop', run = [
     'move-node-to-workspace F',
+  ] },
+
+  # Catch-all
+  { if = 'test-not %{app-bundle-id} = com.mitchellh.ghostty && test %{workspace} = T', run = [
+    'exec-and-forget ~/.config/aerospace/scripts/reject-t.sh',
   ] },
 ]
 
@@ -263,7 +257,7 @@ alt-shift-b = 'move-node-to-workspace B'
 alt-shift-c = 'move-node-to-workspace C'
 alt-shift-d = 'move-node-to-workspace D'
 alt-shift-e = 'move-node-to-workspace E'
-alt-shift-f = 'move-node-to-workspace F' # F is reserved for fullscreen
+alt-shift-f = 'move-node-to-workspace F'                                                    # F is reserved for fullscreen
 alt-shift-g = 'move-node-to-workspace G'
 alt-shift-i = 'move-node-to-workspace I'
 alt-shift-m = 'move-node-to-workspace M'
@@ -273,7 +267,7 @@ alt-shift-p = 'move-node-to-workspace P'
 alt-shift-q = 'move-node-to-workspace Q'
 alt-shift-r = 'move-node-to-workspace R'
 alt-shift-s = 'move-node-to-workspace S'
-alt-shift-t = 'move-node-to-workspace T'
+alt-shift-t = '(test %{app-bundle-id} = com.mitchellh.ghostty) && move-node-to-workspace T'
 alt-shift-u = 'move-node-to-workspace U'
 alt-shift-v = 'move-node-to-workspace V'
 alt-shift-w = 'move-node-to-workspace W'
