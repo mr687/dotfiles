@@ -3,4 +3,5 @@ vim.g.snacks_animate = true
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
-vim.g.lazyvim_ts_lsp = "tsgo"
+vim.g.lazyvim_ts_lsp = "tsc"
+vim.g.ai_cmp = false -- Native inline completions don't support being shown as regular completions
