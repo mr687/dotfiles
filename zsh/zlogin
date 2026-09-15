@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# command cat ~/.nf
-
 # Execute code in the background to not affect the current session
 (
   # <https://github.com/zimfw/zimfw/blob/master/login_init.zsh>

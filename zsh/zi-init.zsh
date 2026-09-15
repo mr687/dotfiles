@@ -22,10 +22,6 @@ zi light zsh-users/zsh-history-substring-search
 zi ice wait"0" lucid
 zi load htr3n/history-search-multi-word
 
-export NVM_COMPLETION=true
-zi ice wait"0" lucid
-zi light lukechilds/zsh-nvm
-
 zi ice as"completion" lucid
 zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 

@@ -65,14 +65,5 @@ fi
 unset my_zsh_lib
 
 #-----------------------------------------------------
-# Development stuffs
-#
-# dev_config_init=${SCRIPTS}/dev-config/_init.sh
-#
-# [[ -f "$dev_config_init"  ]] && source "$dev_config_init"
-#
-# unset dev_config_init
-
-#-----------------------------------------------------
 # after all, set the PATH for macOS
 [[ -x /bin/launchctl ]] && /bin/launchctl setenv PATH $PATH

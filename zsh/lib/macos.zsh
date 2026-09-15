@@ -9,13 +9,14 @@ export GPG_TTY=$(tty)
 export TERM="xterm-256color"
 # [[ -n $TMUX ]] && export TERM="screen-256color"
 
+export PATH="$HOME/bin:$PATH"
+
 #
 # GNU Core Utils
 # brew info coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 [[ ! -f $DOTFILE_DIR/zsh/zshvault ]] || . $DOTFILE_DIR/zsh/zshvault
-[[ ! -f $DOTFILE_DIR/zsh/custom_function ]] || . $DOTFILE_DIR/zsh/custom_function
 
 alias reload="source ${HOME}/.zshrc"
 
@@ -31,9 +32,6 @@ alias cat="bat"
 
 alias builtinman="man"
 alias man="tldr"
-
-alias ai="gh copilot"
-alias commit="opencode -p \"commit the changes, commit message must explain why, follow conventional commit rules. without copyright by opencode\""
 
 alias c="code ."
 alias vim="nvim"
@@ -97,13 +95,6 @@ export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/php@8.2/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.2/include"
 
-# GOLANG
-# export GO_VERSION="1.24.4"
-# export GOROOT="$HOME/.dev/.go/go$GO_VERSION"
-# export GOPATH="$HOME/.dev/.go/.lib$GO_VERSION"
-# export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
-# alias goworkspaces="cd $GOPATH"
-
 # GOLANG BREW
 # export GOPATH="$HOME/go"
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -113,6 +104,7 @@ export PATH="~/.pyenv/versions/3.6.15/bin:${PATH}"
 
 # RUST
 source "$HOME/.cargo/env"
+export PATH="$(brew --prefix rustup)/bin:$PATH"
 
 # COCOAPODS
 export GEM_HOME="$HOME/.gem"
@@ -125,42 +117,6 @@ export PATH="/opt/metasploit-framework/bin:$PATH"
 # PODMAN CLI
 export PATH="/opt/podman/bin:$PATH"
 alias docker=podman
-
-# export PATH="$HOME/.jenv/bin:$PATH"
-# _evalcache jenv init -
-
-_evalcache fzf --zsh
-
-export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse'
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --ansi --padding 1,1 --color=border:#bb9af7"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
-
-source $DOTFILE_DIR/zsh/plugins/fzf-git/fzf-git.sh
-
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
-export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-  esac
-}
 
 # BAT
 export BAT_THEME="tokyonight_night"
