@@ -6,6 +6,6 @@ return {
 
 	SPACE_BG_ACTIVE = 0xff24273a,
 	SPACE_BG_INACTIVE = 0xff4c4f69,
-	BATTERY_BG_COLOR = 0x70ffffff,
+	BATTERY_BG_COLOR = 0xff4c4f69,
 	CLOCK_BG_COLOR = 0xff4c4f69,
 }

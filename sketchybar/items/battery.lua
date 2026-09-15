@@ -16,8 +16,11 @@ for i = num_hearts, 1, -1 do
 	local item_prop = {
 		position = "right",
 		icon = { drawing = "off" },
+		padding_left = 3,
+		padding_right = 3,
+		background = { drawing = "off" },
 		label = {
-			font = "battery-heart:regular:18.0",
+			font = "battery-heart:regular:16.0",
 			drawing = "on",
 			padding_left = 0,
 			padding_right = 0,
