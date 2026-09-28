@@ -60,7 +60,7 @@ on-window-detected = [
   { if = 'test %{app-bundle-id} = com.mitchellh.ghostty', run = [
     'move-node-to-workspace T',
   ] },
-  { if = 'test %{app-bundle-id} = net.whatsapp.WhatsApp', run = [
+  { if = 'test %{app-bundle-id} = net.whatsapp.WhatsApp || test %{app-bundle-id} = me.paolino.fastsapp', run = [
     'move-node-to-workspace W',
   ] },
   { if = 'test %{app-bundle-id} = com.figma.Desktop', run = [
