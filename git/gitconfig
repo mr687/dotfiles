@@ -1,12 +1,16 @@
 [user]
 	name = mr687
 	email = 26916086+mr687@users.noreply.github.com
-	signingkey = /Users/macbench/.ssh/id_ed25519_git_sign_key.pub
+	signingkey = ~/.ssh/id_ed25519_git_sign_key.pub
 
 [gpg]
 	format = ssh
 
 [commit]
+	gpgsign = true
+  verbose = true
+
+[tag]
 	gpgsign = true
 
 [core]
@@ -14,7 +18,7 @@
   whitespace = error
   preloadindex = true
 	ignorecase = false
-	excludesfile = /Users/macbench/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = nvim
   pager = delta
 
