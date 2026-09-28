@@ -58,7 +58,6 @@ tn() {
 
 alias mux=tmuxinator
 
-
 export NODE_NO_WARNINGS=1
 
 _evalcache /opt/homebrew/bin/brew shellenv
@@ -99,9 +98,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/php@8.2/include"
 # export GOPATH="$HOME/go"
 export PATH=$PATH:$(go env GOPATH)/bin
 
-# PYTHON
-export PATH="~/.pyenv/versions/3.6.15/bin:${PATH}"
-
 # RUST
 source "$HOME/.cargo/env"
 export PATH="$(brew --prefix rustup)/bin:$PATH"
@@ -120,10 +116,6 @@ alias docker=podman
 
 # BAT
 export BAT_THEME="tokyonight_night"
-
-# TheFuck
-_evalcache thefuck --alias
-_evalcache thefuck --alias fk
 
 # Zoxide
 _evalcache zoxide init --cmd cd zsh

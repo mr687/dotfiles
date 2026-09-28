@@ -20,7 +20,7 @@ zi from"gh-r" as"program" mv"direnv* -> direnv" \
 zi light zsh-users/zsh-history-substring-search
 
 zi ice wait"0" lucid
-zi load htr3n/history-search-multi-word
+zi load zdharma-continuum/history-search-multi-word
 
 zi ice as"completion" lucid
 zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
