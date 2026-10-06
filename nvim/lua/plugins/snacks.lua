@@ -14,6 +14,7 @@ return {
 		statuscolumn = { enabled = true },
 		---@class snacks.picker.explorer.Config: snacks.picker.files.Config|{}
 		explorer = {
+			enabled = false,
 			replace_netrw = false,
 		},
 		picker = {

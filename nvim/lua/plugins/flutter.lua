@@ -1,7 +1,7 @@
 return {
 	{
 		"akinsho/flutter-tools.nvim",
-		enabled = true,
+		enabled = false,
 		-- cond = function()
 		-- 	-- Only enable for projects containing pubspec.yaml (Flutter/Dart)
 		-- 	local root = vim.uv.cwd()
