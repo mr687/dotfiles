@@ -50,7 +50,7 @@ on-window-detected = [
   { if = 'test %{app-bundle-id} = com.brave.Browser || test %{app-bundle-id} = app.zen-browser.zen', run = [
     'move-node-to-workspace B',
   ] },
-  { if = 'test %{app-bundle-id} = com.TablePro || test %{app-bundle-id} = com.mongodb.compass', run = [
+  { if = 'test %{app-bundle-id} = com.TablePro || test %{app-bundle-id} = com.mongodb.compass || test %{app-bundle-id} = com.dbx.app', run = [
     'move-node-to-workspace D',
     'layout accordion horizontal vertical',
   ] },
