@@ -161,10 +161,14 @@ local poop = sbar.add("item", "poop", {
 poop:subscribe({ "aerospace_workspace_change", "front_app_switched", "space_windows_change" }, update_all_workspaces)
 
 poop:subscribe("aerospace_mode_change", function(env)
-	local is_service = env.MODE == "service"
+	local labels = {
+		service = "[SERVICE]",
+		resize = "[RESIZE]",
+		normal = "",
+	}
 	sbar.set("aerospace.mode", {
-		label = { string = is_service and "[SERVICE]" or "" },
-		drawing = is_service and "on" or "off",
+		label = { string = labels[env.MODE] or "" },
+		drawing = (labels[env.MODE] and labels[env.MODE] ~= "") and "on" or "off",
 	})
 end)
 
