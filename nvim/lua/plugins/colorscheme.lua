@@ -1,6 +1,7 @@
 return {
 	{
 		"folke/tokyonight.nvim",
+		enabled = false,
 		priority = 1000,
 		---@param opts tokyonight.Config
 		opts = function(_, opts)
@@ -38,5 +39,32 @@ return {
 		config = function(_, opts)
 			require("tokyonight").setup(opts)
 		end,
+	},
+
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = function(_, opts)
+			opts.variant = "auto"
+			opts.transparent = true
+			opts.italic_comments = true
+			opts.hide_fillchars = true
+			opts.terminal_colors = true
+			opts.cache = true
+			opts.overrides = function(c)
+				return {
+					CursorLine = { bg = c.bg },
+					CursorLineNr = { fg = c.magenta },
+				}
+			end
+		end,
+	},
+
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "cyberdream",
+		},
 	},
 }
