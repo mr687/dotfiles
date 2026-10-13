@@ -7,7 +7,7 @@
 
 export GPG_TTY=$(tty)
 export TERM="xterm-256color"
-# [[ -n $TMUX ]] && export TERM="screen-256color"
+[[ -n $TMUX ]] && export TERM="tmux-256color"
 
 export PATH="$HOME/bin:$PATH"
 
