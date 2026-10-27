@@ -51,7 +51,7 @@ on-focus-changed = [
 ]
 
 on-window-detected = [
-  { if = 'test %{app-bundle-id} = com.brave.Browser || test %{app-bundle-id} = app.zen-browser.zen', run = [
+  { if = 'test %{app-bundle-id} = net.imput.helium || test %{app-bundle-id} = com.brave.Browser || test %{app-bundle-id} = app.zen-browser.zen', run = [
     'move-node-to-workspace B',
   ] },
   { if = 'test %{app-bundle-id} = com.TablePro || test %{app-bundle-id} = com.mongodb.compass || test %{app-bundle-id} = com.dbx.app', run = [
@@ -81,7 +81,7 @@ on-window-detected = [
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+  '~/.config/aerospace/scripts/on-workspace-changed.sh',
 ]
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
@@ -127,9 +127,9 @@ persistent-workspaces = [
   # "Z",
 ]
 
-workspace-to-monitor-force-assignment.8 = "MSI"
-workspace-to-monitor-force-assignment.9 = "MSI"
-workspace-to-monitor-force-assignment.10 = "MSI"
+workspace-to-monitor-force-assignment.8 = ["MSI", "DX320A1"]
+workspace-to-monitor-force-assignment.9 = ["MSI", "DX320A1"]
+workspace-to-monitor-force-assignment.10 = ["MSI", "DX320A1"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -156,7 +156,7 @@ key-mapping.preset = 'qwerty'
 inner.horizontal = 12
 inner.vertical = 12
 outer.left = 22
-outer.top = [{ monitor."MSI" = 54 }, 18]
+outer.top = [{ monitor."MSI" = 54 }, { monitor."DX320A1" = 54 }, 18]
 outer.right = 22
 outer.bottom = 22
 
