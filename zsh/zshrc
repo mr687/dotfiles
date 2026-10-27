@@ -20,10 +20,6 @@ else
     echo "Could not find the init script ${ZSH_INIT}"
 fi
 
-#
-# https://gist.github.com/ctechols/ca1035271ad134841284
-# https://carlosbecker.com/posts/speeding-up-zsh
-#
 autoload -Uz compinit
 
 case $SYSTEM in
@@ -38,11 +34,6 @@ case $SYSTEM in
     # not yet match GNU & BSD stat
   ;;
 esac
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/macbench/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/macbench/.lmstudio/bin"
@@ -63,5 +54,5 @@ source "$HOME/.atuin/bin/env"
 _evalcache atuin init zsh
 
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
