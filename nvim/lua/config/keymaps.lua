@@ -34,4 +34,4 @@ vim.keymap.set("n", "<leader>cp", function()
 	print("Copied relative: " .. result)
 end, { desc = "Copy relative path and line number" })
 
-require("plugins.herdr.herdr_nav")
+-- require("plugins.herdr.herdr_nav")
