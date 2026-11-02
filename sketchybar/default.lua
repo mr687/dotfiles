@@ -1,8 +1,8 @@
 local colors = require("colors")
 
 sbar.default({
-	padding_left = 5,
-	padding_right = 5,
+	padding_left = 0,
+	padding_right = 0,
 	icon = {
 		font = "Hack Nerd Font:Bold:14.0",
 		color = colors.FOREGROUND,
