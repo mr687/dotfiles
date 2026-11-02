@@ -25,7 +25,7 @@ zi load zdharma-continuum/history-search-multi-word
 # zi ice as"completion" lucid
 # zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zi ice as"completion" lucid
-zi snippet https://github.com/Amar1729/yabai-zsh-completions/blob/main/src/_yabai
+# zi ice as"completion" lucid
+# zi snippet https://github.com/Amar1729/yabai-zsh-completions/blob/main/src/_yabai
 
 zi snippet https://github.com/mroth/evalcache/blob/master/evalcache.plugin.zsh
