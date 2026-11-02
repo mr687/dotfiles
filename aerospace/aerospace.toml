@@ -51,7 +51,7 @@ on-focus-changed = [
 ]
 
 on-window-detected = [
-  { if = 'test %{app-bundle-id} = net.imput.helium || test %{app-bundle-id} = com.brave.Browser || test %{app-bundle-id} = app.zen-browser.zen', run = [
+  { if = 'test %{app-bundle-id} = com.apple.Safari || test %{app-bundle-id} = net.imput.helium || test %{app-bundle-id} = com.brave.Browser || test %{app-bundle-id} = app.zen-browser.zen', run = [
     'move-node-to-workspace B',
   ] },
   { if = 'test %{app-bundle-id} = com.TablePro || test %{app-bundle-id} = com.mongodb.compass || test %{app-bundle-id} = com.dbx.app', run = [
