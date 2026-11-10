@@ -1,5 +1,6 @@
 return {
 	"f-person/git-blame.nvim",
+	enabled = false,
 	-- load the plugin at startup
 	event = "VeryLazy",
 	-- Because of the keys part, you will be lazy loading this plugin.
