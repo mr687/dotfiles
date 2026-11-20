@@ -316,3 +316,9 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+[exec]
+inherit-env-vars = true
+
+[exec.env-vars]
+PATH = '~/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
